@@ -20,7 +20,7 @@ export default function ContactForm() {
       )
       .then(() => {
         alert('Message sent!');
-        form.current.reset();
+        form.current?.reset();
       })
       .catch((error) => {
         console.error('EmailJS error:', error);
