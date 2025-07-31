@@ -26,6 +26,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
 .trusted-logo-link img {
   height: 64px;
   max-width: 160px;
@@ -36,4 +37,21 @@ body {
 .trusted-logo-link:hover img {
   transform: scale(1.08);
   opacity: 0.9;
+}
+
+/* ==== ARROW STROKE DRAW ==== */
+.arrow-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawLine 1.2s ease forwards;
+}
+
+.arrow-path.delay-\[1s\] {
+  animation-delay: 1s;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
 }

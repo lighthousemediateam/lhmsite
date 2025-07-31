@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Link from 'next/link';
 import ClientBanner from '../components/ClientBanner';
 import styles from './ClientBanner.module.css';
+import ServicesSection from '@/components/ServicesSection';
 
 export default function Home() {
   return (
@@ -79,8 +80,17 @@ export default function Home() {
         {/* Gliding Client Banner Section */}
         <ClientBanner />
 
+
         {/* Spacer before final CTA */}
         <div className="h-24 sm:h-32" />
+
+        <ServicesSection />
+        <div className="h-24 sm:h-32" />
+
+
+        {/* Spacer before final CTA */}
+        <div className="h-24 sm:h-32" />
+
 
         {/* Ready to Get Started Section */}
         <section className="text-center px-6 py-20 bg-[#1a191b] text-[#cfb580]">
@@ -99,7 +109,7 @@ export default function Home() {
         <div className="h-24 sm:h-32" />
 
 
-        
+
 
 
 
