@@ -14,11 +14,10 @@ const ServicesSection: React.FC = () => {
 
                 {/* SVG Arrow Path */}
                 <svg
-                    
-                    className="absolute left-[500px] top-[60px] z-0"
-                    width="60"
-                    height="600"
-                    viewBox="0 0 60 600"
+                    className="absolute left-[360px] top-[-50px] z-0"
+                    width="240"
+                    height="800"
+                    viewBox="-100 0 300 800"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
@@ -38,7 +37,7 @@ const ServicesSection: React.FC = () => {
 
                     {/* 01 ➝ 02 */}
                     <motion.path
-                        d="M30 0 C15 120, 15 200, 30 260"
+                        d="M60 0 C-100 160, -100 320, 60 400"
                         stroke="#cfb580"
                         strokeWidth="2"
                         fill="none"
@@ -49,7 +48,7 @@ const ServicesSection: React.FC = () => {
 
                     {/* 02 ➝ 03 */}
                     <motion.path
-                        d="M30 260 C15 360, 15 500, 30 580"
+                        d="M60 400 C-100 560, -100 720, 60 800"
                         stroke="#cfb580"
                         strokeWidth="2"
                         fill="none"
@@ -59,6 +58,10 @@ const ServicesSection: React.FC = () => {
                         transition={{ duration: 1.2, ease: 'easeInOut', delay: 0.4 }}
                     />
                 </svg>
+
+
+
+
 
                 {/* Step Content */}
                 <div className="flex flex-col gap-24 items-center w-fit">
@@ -87,12 +90,12 @@ const ServicesSection: React.FC = () => {
                     ))}
 
                     {/* CTA Button */}
-                    <div className="text-center pt-10">
+                    <div className="text-center -mt-10">
                         <a
-                            href="/contact-page"
+                            href="/contact"
                             className="inline-block border border-[#cfb580] text-[#cfb580] rounded-full px-6 py-3 hover:bg-[#cfb580] hover:text-black transition"
                         >
-                            Let’s Create
+                            Let’s Connect
                         </a>
                     </div>
                 </div>

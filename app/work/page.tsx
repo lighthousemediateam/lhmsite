@@ -4,20 +4,20 @@ import { useEffect } from 'react';
 
 const workItems = [
     {
-        href: '/reign-page',
+        href: '/reign',
         cover: 'https://www.lhmcollective.com/s/Screenshot-2025-07-09-at-50910PM.png',
         video: 'https://lhmcollective.b-cdn.net/REIGN%20Preview.mp4',
         logo: 'https://www.lhmcollective.com/s/REIGN_Grayscale_Branding_2019_Positive_Horizontal.png',
     },
     {
-        href: '/reign-storm-page',
+        href: '/reign-storm',
         cover: 'https://www.lhmcollective.com/s/Screenshot-2025-07-09-at-53242PM.png',
         video: 'https://lhmcollective.b-cdn.net/RS%20Preview.mp4',
         logo: 'https://www.lhmcollective.com/s/reign_storm_logo_final_cleaned_v3.png',
     },
     // Add more projects here...
     {
-        href: '/recess-page',
+        href: '/work/recess',
         cover: 'https://www.lhmcollective.com/s/Screenshot-2025-07-12-at-44610PM.png',
         video: 'https://lhmcollective.b-cdn.net/Class%20at%20Recess%20Preview.mp4',
         logo: 'https://www.lhmcollective.com/s/RecessLogo_RVersion_NoBox_White_300dpi_F-xftj.png',
@@ -29,13 +29,13 @@ const workItems = [
         logo: 'https://www.lhmcollective.com/s/avondale-logo.png',
     },
     {
-        href: '/itdrc',
+        href: "/work/itdrc",
         cover: 'https://lhmcollective.b-cdn.net/ITDRC%20cover%20photo.png',
         video: 'https://lhmcollective.b-cdn.net/ITDRC%20Preview.mp4',
         logo: 'https://www.lhmcollective.com/s/itdrc_logo_white.png',
     },
     {
-        href: '/virgin-hotels',
+        href: '/virgin',
         cover: 'https://lhmcollective.b-cdn.net/Virgin%20cover%20photo.png',
         video: 'https://lhmcollective.b-cdn.net/Virgin%20Preview%202.mp4',
         logo: 'https://www.lhmcollective.com/s/virgin-hotel-logo.png',

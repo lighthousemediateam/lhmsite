@@ -10,7 +10,7 @@ export default function AboutHero() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="https://lhmcollective.b-cdn.net/LHM%20Montage%20250mb.mp4" type="video/mp4" />
+        <source src="https://lhmcollective.b-cdn.net/LHM%20Montage%20150mb%20export.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute z-20 text-center text-[#cfb580] text-[3.15rem] font-bold uppercase tracking-wider leading-[1.1] top-[calc(45%+120px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-shadow-md max-w-[90%]">
@@ -19,7 +19,7 @@ export default function AboutHero() {
 
       <a
         href="/contact-page"
-        className="absolute z-20 top-[calc(58%+120px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#cfb580] font-semibold uppercase text-sm px-7 py-3 border-2 border-[#cfb580] rounded-full transition-all duration-300 hover:bg-[#cfb580] hover:text-[#1a191b] hover:shadow-[0_0_16px_rgba(207,181,128,0.6)]"
+        className="absolute z-20 top-[calc(58%+70px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#cfb580] font-semibold uppercase text-sm px-7 py-3 border-2 border-[#cfb580] rounded-full transition-all duration-300 hover:bg-[#cfb580] hover:text-[#1a191b] hover:shadow-[0_0_16px_rgba(207,181,128,0.6)]"
       >
         Let&apos;s Connect
       </a>

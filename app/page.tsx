@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+
 import Link from 'next/link';
 import ClientBanner from '../components/ClientBanner';
 import styles from './ClientBanner.module.css';
@@ -7,7 +7,7 @@ import ServicesSection from '@/components/ServicesSection';
 export default function Home() {
   return (
     <>
-      <Header />
+     
 
       <main className="bg-[#1a191b] text-[#cfb580] font-sans overflow-hidden">
         {/* Hero Section */}
@@ -20,7 +20,7 @@ export default function Home() {
             className="absolute top-0 left-0 w-full h-full object-cover object-center z-0 pointer-events-none"
           >
             <source
-              src="https://lhmcollective.b-cdn.net/LHM%20Montage%20250mb.mp4"
+              src="https://lhmcollective.b-cdn.net/LHM%20Montage%20150mb%20export.mp4"
               type="video/mp4"
             />
           </video>
@@ -32,7 +32,7 @@ export default function Home() {
             </h1>
 
             <a
-              href="/contact-page"
+              href="/contact"
               className="text-[#cfb580] text-[1.2rem] font-[600] uppercase px-[40px] py-[14px] border-2 border-[#cfb580] rounded-[100px] bg-transparent transition-all duration-300 no-underline hover:bg-[#cfb580] hover:text-[#1a191b] hover:shadow-[0_0_12px_rgba(207,181,128,0.5)]"
             >
               Let’s Connect
@@ -47,33 +47,89 @@ export default function Home() {
             Chosen By
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-10 gap-y-14 items-center justify-center max-w-7xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-14 max-w-7xl mx-auto">
             {[
-              { src: "REIGN_White_Text_Transparent.png", alt: "Reign", href: "/work/reign" },
-              { src: "virgin hotel logo.png", alt: "Virgin", href: "/work/virgin" },
-              { src: "cuisnart logo.png", alt: "Cuisinart", href: "/work/cuisinart" },
-              { src: "ppa_logo_white.png", alt: "PPA", href: "/work/ppa" },
-              { src: "reign_storm_logo_final_cleaned_v3.png", alt: "Reign Storm", href: "/work/reign-storm" },
-              { src: "RecessLogo_RVersion_NoBox_White_300dpi_F.png", alt: "Recess", href: "/work/recess" },
-              { src: "arnold_sports_logo_white.png", alt: "Arnold", href: "/work/arnold" },
-              { src: "avondale logo.png", alt: "Avondale", href: "/work/avondale" },
-              { src: "ChatGPT Image Jul 13, 2025 at 06_58_21 PM.png", alt: "Even Embers", href: "/work/even-embers" },
-              { src: "itdrc_logo_white.png", alt: "ITDRC", href: "/work/itdrc" },
-              { src: "Blackhawk logo v2.png", alt: "Blackhawk", href: "/work/blackhawk" },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/REIGN_White_Text_Transparent.png",
+                alt: "Reign",
+                href: "/work/reign",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/virgin%20hotel%20logo.png",
+                alt: "Virgin",
+                href: "/work/virgin",
+                scale: "scale-[1.25]",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/cuisnart%20logo.png",
+                alt: "Cuisinart",
+                href: "/work/cuisinart",
+                scale: "scale-[2]",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/ppa_logo_white.png",
+                alt: "PPA",
+                href: "/work/ppa",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/reign_storm_logo_final_cleaned_v3.png",
+                alt: "Reign Storm",
+                href: "/work/reign-storm",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/RecessLogo_RVersion_NoBox_White_300dpi_F.png",
+                alt: "Recess",
+                href: "/work/recess",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/arnold_sports_logo_white.png",
+                alt: "Arnold",
+                href: "/work/arnold",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/avondale%20logo.png",
+                alt: "Avondale",
+                href: "/work/avondale",
+                scale: "scale-[2.25]",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/ChatGPT%20Image%20Jul%2013,%202025%20at%2006_58_21%20PM.png",
+                alt: "Even Embers",
+                href: "/work/even-embers",
+                scale: "scale-[2]",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Logos/itdrc_logo_white.png",
+                alt: "ITDRC",
+                href: "/work/itdrc",
+              },
+              {
+                src: "https://lhmcollective.b-cdn.net/Blackhawk%20logo%20v2.png",
+                alt: "Blackhawk",
+                href: "/work/blackhawk",
+                scale: "scale-[1.75]",
+              },
             ].map((logo) => (
               <Link
                 key={logo.alt}
                 href={logo.href}
-                className="trusted-logo-link block hover:opacity-90 transition duration-300"
+                className="trusted-logo-link block w-1/2 sm:w-1/3 lg:w-1/6 flex justify-center hover:opacity-90 transition duration-300"
               >
                 <img
-                  src={`https://lhmcollective.b-cdn.net/Logos/${encodeURIComponent(logo.src)}`}
+                  src={logo.src}
                   alt={logo.alt}
-                  className="h-16 sm:h-20 max-w-[160px] mx-auto object-contain"
+                  className={`h-12 ${logo.scale || ""}`}
                 />
               </Link>
             ))}
           </div>
+
+
+
+
+
+
+
         </section>
         <div className="h-24 sm:h-32" />
 
@@ -99,7 +155,7 @@ export default function Home() {
           </h2>
 
           <a
-            href="/contact-page"
+            href="/contact"
             className="text-[#cfb580] text-[1.1rem] font-[600] uppercase px-[40px] py-[14px] border-2 border-[#cfb580] rounded-[100px] bg-transparent transition-all duration-300 inline-block no-underline hover:bg-[#cfb580] hover:text-[#1a191b] hover:shadow-[0_0_12px_rgba(207,181,128,0.5)]"
           >
             Let’s Connect
