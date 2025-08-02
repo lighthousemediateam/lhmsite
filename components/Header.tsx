@@ -75,17 +75,31 @@ export default function Header() {
 
       {/* Mobile Nav Overlay */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#1a191b] flex flex-col items-center justify-center z-40 space-y-8 text-3xl text-[#cfb580] font-bold uppercase">
-          {navItems.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              onClick={() => setIsOpen(false)}
-              className="hover:opacity-80"
-            >
-              {label}
-            </Link>
-          ))}
+        <div className="md:hidden fixed inset-0 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
+          {/* Close Button */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-6 right-6 bg-[#cfb580] text-black p-3 rounded-full shadow-lg"
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          {/* Nav Links */}
+          <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
+            {navItems.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={() => setIsOpen(false)}
+                className="hover:opacity-80"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Instagram Icon */}
           <a
             href="https://www.instagram.com/yourprofile"
             target="_blank"
@@ -101,6 +115,7 @@ export default function Header() {
           </a>
         </div>
       )}
+
     </header>
   );
 }
