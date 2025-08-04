@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
+
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,7 @@ export default function Header() {
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Work', href: '/work' },
+    { label: 'ugc', href: '/ugc'},
     { label: 'Photo', href: '/photo' },
     { label: 'About Us', href: '/about' },
     { label: 'Contact', href: '/contact' },

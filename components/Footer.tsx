@@ -14,6 +14,7 @@ export default function Footer() {
           <nav className="mt-8 sm:mt-0 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-md uppercase font-semibold text-right sm:text-right">
             <a href="/" className="hover:opacity-80">Home</a>
             <a href="/work" className="hover:opacity-80">Work</a>
+            <a href="/ugc" className="hover:opacity-80">UGC</a>
             <a href="/photo" className="hover:opacity-80">Photo</a>
             <a href="/about" className="hover:opacity-80">About Us</a>
             <a href="/contact" className="hover:opacity-80">Contact</a>

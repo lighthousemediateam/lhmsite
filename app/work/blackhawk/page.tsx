@@ -3,7 +3,7 @@ export default function BlackhawkPage() {
         <div className="bg-[#1a191b] text-[#cfb580] min-h-screen">
             {/* Page Title */}
             <div className="text-center pt-34">
-                <h1 className="text-4xl font-bold uppercase tracking-wide">BLACKHAWK</h1>
+                <h1 className="text-7xl font-bold uppercase tracking-wide">BLACKHAWK</h1>
             </div>
 
             {/* Hero Video */}

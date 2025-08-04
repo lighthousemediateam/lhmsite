@@ -2,12 +2,12 @@ export default function ITDRCPage() {
     return (
         <div className="bg-[#1a191b] text-[#cfb580] min-h-screen">
             {/* Page Title */}
-            <div className="text-center pt-10">
-                <h1 className="text-4xl font-bold uppercase tracking-wide">ITDRC</h1>
+            <div className="text-center pt-34">
+                <h1 className="text-7xl font-bold uppercase tracking-wide">ITDRC</h1>
             </div>
 
             {/* Hero Video */}
-            <div className="w-full max-w-[1200px] aspect-video mx-auto mt-10 overflow-hidden bg-black">
+            <div className="w-full max-w-[1200px] aspect-video mx-auto mt-20 overflow-hidden bg-black">
                 <video
                     className="w-full h-full object-cover block"
                     controls

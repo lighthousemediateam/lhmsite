@@ -3,7 +3,7 @@ export default function RecessPage() {
         <div className="bg-[#1a191b] text-[#cfb580] min-h-screen">
             {/* Page Title */}
             <div className="text-center mt-34">
-                <h1 className="text-4xl font-bold uppercase tracking-wide">RECESS</h1>
+                <h1 className="text-7xl font-bold uppercase tracking-wide">RECESS</h1>
             </div>
 
             {/* Hero Video */}
@@ -16,7 +16,7 @@ export default function RecessPage() {
                     preload="auto"
                     poster="https://via.placeholder.com/1280x720?text=RECESS+Poster"
                 >
-                    <source src="https://lhmcollective.b-cdn.net/RECESS%20-%20main%20client%20video.mp4" type="video/mp4" />
+                    <source src="https://lhmcollective.b-cdn.net/Class%20at%20Recess%20Website.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

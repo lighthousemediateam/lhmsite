@@ -2,7 +2,7 @@ export default function PpaPage() {
     return (
         <div className="bg-[#1a191b] text-[#cfb580] min-h-screen">
             <div className="text-center mt-24">
-                <h1 className="text-4xl font-bold uppercase tracking-wide">PPA</h1>
+                <h1 className="text-7xl font-bold uppercase tracking-wide">PPA</h1>
             </div>
 
             <div className="w-full max-w-[1200px] aspect-video mx-auto mt-10 overflow-hidden bg-black">
