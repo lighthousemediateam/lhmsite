@@ -14,7 +14,7 @@ const ServicesSection: React.FC = () => {
 
                 {/* SVG Arrow Path */}
                 <svg
-                    className="absolute left-[360px] top-[-50px] z-0"
+                    className="absolute left-[750px] top-[-50px] z-0"
                     width="240"
                     height="800"
                     viewBox="-100 0 300 800"

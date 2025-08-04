@@ -19,7 +19,7 @@ export default function AboutHero() {
 
       <a
         href="/contact-page"
-        className="absolute z-20 top-[calc(58%+70px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#cfb580] font-semibold uppercase text-sm px-7 py-3 border-2 border-[#cfb580] rounded-full transition-all duration-300 hover:bg-[#cfb580] hover:text-[#1a191b] hover:shadow-[0_0_16px_rgba(207,181,128,0.6)]"
+        className="absolute z-20 top-[calc(58%+20px)] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[#cfb580] font-semibold uppercase text-sm px-7 py-3 border-2 border-[#cfb580] rounded-full transition-all duration-300 hover:bg-[#cfb580] hover:text-[#1a191b] hover:shadow-[0_0_16px_rgba(207,181,128,0.6)]"
       >
         Let&apos;s Connect
       </a>

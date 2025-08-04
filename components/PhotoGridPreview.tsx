@@ -2,14 +2,15 @@
 
 import React from 'react';
 import clsx from 'clsx';
+import { photoUrls } from '@/app/photo/photoData'; // must be exactly 118
 
 type GridItem = {
   id: number;
   span?: 'tall' | 'wide' | 'large';
 };
 
-// Generate 118 items with alternating spans
-const gridItems: GridItem[] = Array.from({ length: 118 }, (_, i) => {
+// Generate span layout for 118 items
+const gridItems: GridItem[] = Array.from({ length: photoUrls.length }, (_, i) => {
   const id = i + 1;
   let span: GridItem['span'];
 
@@ -24,24 +25,34 @@ export default function PhotoGridPreview() {
   return (
     <div className="w-screen max-w-none px-4 py-20">
       <p className="text-center text-sm text-[#cfb580] mb-6">
-        Showing {gridItems.length} items
+        Showing {photoUrls.length} items
       </p>
 
       <div className="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] auto-rows-[300px] grid-flow-dense gap-6">
-        {gridItems.map(({ id, span }) => (
-          <div
-            key={id}
-            className={clsx(
-              'relative rounded-xl shadow-lg flex items-center justify-center text-white text-4xl font-bold bg-neutral-800 transition-all duration-300',
-              {
-                'lg:col-span-2': span === 'wide' || span === 'large',
-                'lg:row-span-2': span === 'tall' || span === 'large',
-              }
-            )}
-          >
-            {id}
-          </div>
-        ))}
+        {gridItems.map(({ id, span }) => {
+          const photo = photoUrls[id - 1]; // Get the actual image URL
+          if (!photo) return null;
+
+          return (
+            <div
+              key={id}
+              className={clsx(
+                'relative rounded-xl shadow-lg overflow-hidden transition-all duration-300',
+                {
+                  'lg:col-span-2': span === 'wide' || span === 'large',
+                  'lg:row-span-2': span === 'tall' || span === 'large',
+                }
+              )}
+            >
+              <img
+                src={photo.url}
+                alt={`Photo ${id}`}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -101,7 +101,7 @@ export default function Header() {
 
           {/* Instagram Icon */}
           <a
-            href="https://www.instagram.com/yourprofile"
+            href="https://www.instagram.com/lhmteam"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-10"
