@@ -35,7 +35,8 @@ export default function Header() {
       {/* MOBILE hamburger button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
+        className="md:hidden absolute top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
+
       >
         {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
       </button>
