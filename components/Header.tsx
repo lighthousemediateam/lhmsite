@@ -52,19 +52,21 @@ export default function Header() {
         })}
 
         {/* Instagram Icon */}
-        <a
-          href="https://www.instagram.com/yourprofile"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-2"
-        >
-          <svg
-            className="w-5 h-5 fill-[#cfb580] hover:opacity-80 transition-opacity duration-200"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2.2c3.2 0 3.6 0 4.9.1..." />
-          </svg>
-        </a>
+      <a
+  href="https://www.instagram.com/lhmteam"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="ml-2"
+>
+  <svg
+    className="w-5 h-5 fill-[#cfb580] hover:opacity-80 transition-opacity duration-200"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M7.75 2C4.6 2 2 4.6 2 7.75v8.5C2 19.4 4.6 22 7.75 22h8.5C19.4 22 22 19.4 22 16.25v-8.5C22 4.6 19.4 2 16.25 2h-8.5zm0 1.5h8.5c2.17 0 3.75 1.58 3.75 3.75v8.5c0 2.17-1.58 3.75-3.75 3.75h-8.5C5.58 19.5 4 17.92 4 15.75v-8.5C4 5.58 5.58 4 7.75 4zm4.25 3a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zm0 1.5a3.75 3.75 0 1 1 0 7.5 3.75 3.75 0 0 1 0-7.5zm5.75-.25a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+  </svg>
+</a>
+
       </nav>
 
       {/* Mobile Menu Toggle */}

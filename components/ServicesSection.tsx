@@ -1,67 +1,94 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { serviceSteps } from './ServiceSteps';
+
+const useWindowWidth = () => {
+    const [width, setWidth] = useState<number | null>(null);
+
+    useEffect(() => {
+        const updateWidth = () => setWidth(window.innerWidth);
+        updateWidth(); // Set on mount
+
+        window.addEventListener('resize', updateWidth);
+        return () => window.removeEventListener('resize', updateWidth);
+    }, []);
+
+    return width;
+};
 
 const ServicesSection: React.FC = () => {
     const pathRef = useRef(null);
     const isInView = useInView(pathRef, { once: true, margin: '-100px' });
+    const width = useWindowWidth();
+
+    const getLeftOffset = () => {
+        if (width === null) return 750;     // fallback
+        if (width <= 500) return null;      // hide on tiny screens
+        if (width <= 640) return 140;       // phones
+        if (width <= 768) return 200;       // small tablets
+        if (width <= 1024) return 300;      // iPads and older laptops
+        if (width <= 1280) return 370;      // 13" MacBooks
+        if (width <= 1440) return 430;      // 14" MacBook Pro
+        if (width <= 1728) return 350;      // 16" MacBook Pro
+        if (width <= 1920) return 580;      // HD desktop
+        return 750;                         // ultrawide / 4K
+    };
+
+    const leftOffset = getLeftOffset();
 
     return (
         <section className="w-full py-28 px-4">
             <div ref={pathRef} className="relative flex flex-col items-center">
-
                 {/* SVG Arrow Path */}
-                <svg
-                    className="absolute left-[750px] top-[-50px] z-0"
-                    width="240"
-                    height="800"
-                    viewBox="-100 0 300 800"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <defs>
-                        <marker
-                            id="arrowhead"
-                            markerWidth="10"
-                            markerHeight="10"
-                            refX="0"
-                            refY="3"
-                            orient="auto"
-                            markerUnits="strokeWidth"
-                        >
-                            <path d="M0,0 L0,6 L6,3 Z" fill="#cfb580" />
-                        </marker>
-                    </defs>
-
-                    {/* 01 ➝ 02 */}
-                    <motion.path
-                        d="M60 0 C-100 160, -100 320, 60 400"
-                        stroke="#cfb580"
-                        strokeWidth="2"
+                {leftOffset !== null && (
+                    <svg
+                        style={{ position: 'absolute', top: -50, left: `${leftOffset}px`, zIndex: 0 }}
+                        width="240"
+                        height="800"
+                        viewBox="-100 0 300 800"
                         fill="none"
-                        initial={{ pathLength: 0 }}
-                        animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                        transition={{ duration: 1, ease: 'easeInOut' }}
-                    />
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <defs>
+                            <marker
+                                id="arrowhead"
+                                markerWidth="10"
+                                markerHeight="10"
+                                refX="0"
+                                refY="3"
+                                orient="auto"
+                                markerUnits="strokeWidth"
+                            >
+                                <path d="M0,0 L0,6 L6,3 Z" fill="#cfb580" />
+                            </marker>
+                        </defs>
 
-                    {/* 02 ➝ 03 */}
-                    <motion.path
-                        d="M60 400 C-100 560, -100 720, 60 800"
-                        stroke="#cfb580"
-                        strokeWidth="2"
-                        fill="none"
-                        markerEnd="url(#arrowhead)"
-                        initial={{ pathLength: 0 }}
-                        animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
-                        transition={{ duration: 1.2, ease: 'easeInOut', delay: 0.4 }}
-                    />
-                </svg>
+                        {/* 01 ➝ 02 */}
+                        <motion.path
+                            d="M60 0 C-100 160, -100 320, 60 400"
+                            stroke="#cfb580"
+                            strokeWidth="2"
+                            fill="none"
+                            initial={{ pathLength: 0 }}
+                            animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+                            transition={{ duration: 1, ease: 'easeInOut' }}
+                        />
 
-
-
-
+                        {/* 02 ➝ 03 */}
+                        <motion.path
+                            d="M60 400 C-100 560, -100 720, 60 800"
+                            stroke="#cfb580"
+                            strokeWidth="2"
+                            fill="none"
+                            markerEnd="url(#arrowhead)"
+                            initial={{ pathLength: 0 }}
+                            animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+                            transition={{ duration: 1.2, ease: 'easeInOut', delay: 0.4 }}
+                        />
+                    </svg>
+                )}
 
                 {/* Step Content */}
                 <div className="flex flex-col gap-24 items-center w-fit">
