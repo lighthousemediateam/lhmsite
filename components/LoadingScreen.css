@@ -1,0 +1,54 @@
+#loading-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: #1a191b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+#loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.logo {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 10.5vw;
+  font-weight: 700;
+  color: #ffffff;
+  position: relative;
+  letter-spacing: 0.1em;
+}
+.shimmer::before {
+  content: 'LHM';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    270deg,
+    transparent 0%,
+    #f6d776 47%, #fff1a8 50%, #f6d776 53%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  background-repeat: no-repeat;
+  background-position: 200% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerFlash 1.2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerFlash {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 600px) {
+  .logo { font-size: 20vw; }
+}
