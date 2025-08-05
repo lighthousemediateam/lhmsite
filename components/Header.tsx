@@ -25,22 +25,24 @@ export default function Header() {
 
   return (
     <>
-      {/* MOBILE sticky brand title */}
-      <div className="md:hidden fixed top-0 left-0 w-full bg-transparent z-40 px-6 py-4">
-        <div className="text-[#cfb580] text-xl font-bold uppercase tracking-widest">
-          LIGHT HOUSE MEDIA
+      {/* MOBILE fixed brand title */}
+      {!isOpen && (
+        <div className="md:hidden fixed top-0 left-0 w-full z-40 bg-transparent px-6 py-4">
+          <div className="text-[#cfb580] text-xl font-bold uppercase tracking-widest">
+            LIGHT HOUSE MEDIA
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* MOBILE hamburger button */}
+      {/* MOBILE hamburger toggle (scrolls with page) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
+        className="md:hidden absolute top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
       >
         {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
       </button>
 
-      {/* DESKTOP header */}
+      {/* DESKTOP HEADER */}
       <header className="hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between">
         <div className="text-[#cfb580] text-2xl font-bold uppercase tracking-widest">
           LIGHT HOUSE MEDIA
@@ -49,7 +51,6 @@ export default function Header() {
         <nav className="flex items-center gap-6 text-lg uppercase font-semibold">
           {navItems.map(({ label, href }) => {
             const active = isExactActive(href);
-
             return (
               <Link
                 key={label}
@@ -65,7 +66,7 @@ export default function Header() {
             );
           })}
 
-          {/* Instagram Icon */}
+          {/* Instagram icon */}
           <a
             href="https://www.instagram.com/lhmteam"
             target="_blank"
@@ -83,11 +84,9 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* MOBILE overlay menu */}
+      {/* MOBILE OVERLAY MENU */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 pt-24 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
-          
-
+        <div className="md:hidden fixed inset-0 bg-[#1a191b] z-40 flex flex-col items-center justify-center text-[#cfb580] pt-24">
           {/* Nav links */}
           <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
             {navItems.map(({ label, href }) => (
@@ -102,7 +101,7 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Instagram */}
+          {/* Instagram icon */}
           <a
             href="https://www.instagram.com/lhmteam"
             target="_blank"
@@ -118,7 +117,6 @@ export default function Header() {
           </a>
         </div>
       )}
-
     </>
   );
 }
