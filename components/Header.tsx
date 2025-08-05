@@ -85,7 +85,7 @@ export default function Header() {
 
       {/* MOBILE overlay menu */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
+        <div className="md:hidden fixed inset-0 pt-24 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
           {/* Close button */}
           <button
             onClick={() => setIsOpen(false)}
@@ -109,7 +109,7 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Instagram icon */}
+          {/* Instagram */}
           <a
             href="https://www.instagram.com/lhmteam"
             target="_blank"
@@ -125,6 +125,7 @@ export default function Header() {
           </a>
         </div>
       )}
+
     </>
   );
 }
