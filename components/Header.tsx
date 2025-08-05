@@ -25,23 +25,15 @@ export default function Header() {
 
   return (
     <>
-      {/* ✅ FIXED brand title (always visible on mobile) */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-40 bg-transparent px-6 py-4">
+      {/* ✅ FIXED BRAND TEXT ON MOBILE */}
+      <div className="md:hidden fixed top-0 left-0 w-full z-40 bg-[#1a191b] px-6 py-4">
         <div className="text-[#cfb580] text-xl font-bold uppercase tracking-widest">
           LIGHT HOUSE MEDIA
         </div>
       </div>
 
-      {/* ✅ SCROLLING hamburger button (not fixed) */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden absolute top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-30"
-      >
-        {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
-      </button>
-
       {/* ✅ DESKTOP HEADER */}
-      <header className="hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between">
+      <header className="hidden md:flex fixed top-0 left-0 w-full z-50 bg-[#1a191b] px-6 py-8 items-center justify-between">
         <div className="text-[#cfb580] text-2xl font-bold uppercase tracking-widest">
           LIGHT HOUSE MEDIA
         </div>
@@ -75,16 +67,25 @@ export default function Header() {
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M7.75 2C4.6 2 2 4.6 2 7.75v8.5C2 19.4 4.6 22 7.75 22h8.5C19.4 22 22 19.4 22 16.25v-8.5C22 4.6 19.4 2 16.25 2h-8.5zm0 1.5h8.5c2.17 0 3.75 1.58 3.75 3.75v8.5c0 2.17-1.58 3.75-3.75 3.75h-8.5C5.58 19.5 4 17.92 4 15.75v-8.5C4 5.58 5.58 4 7.75 4zm4.25 3a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5zm0 1.5a3.75 3.75 0 1 1 0 7.5 3.75 3.75 0 0 1 0-7.5zm5.75-.25a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+              <path d="M7.75 2C4.6 2 2 4.6 2 7.75v8.5C2 19.4 4.6 22 7.75 22h8.5C19.4 22 22 19.4 22 16.25v-8.5C22 4.6 19.4 2 16.25 2h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM18 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
             </svg>
           </a>
         </nav>
       </header>
 
-      {/* ✅ MOBILE overlay */}
+      {/* ✅ HAMBURGER BUTTON THAT SCROLLS WITH PAGE (placed in document flow) */}
+      <div className="md:hidden px-6 pt-20">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="bg-[#cfb580] rounded-full p-3 shadow-lg"
+        >
+          {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* ✅ MOBILE OVERLAY MENU */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#1a191b] z-30 flex flex-col items-center justify-center text-[#cfb580] pt-24">
-          {/* Nav links */}
+        <div className="md:hidden fixed inset-0 z-50 bg-[#1a191b] flex flex-col items-center justify-center text-[#cfb580] pt-24">
           <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
             {navItems.map(({ label, href }) => (
               <Link
@@ -98,7 +99,6 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Instagram icon */}
           <a
             href="https://www.instagram.com/lhmteam"
             target="_blank"
