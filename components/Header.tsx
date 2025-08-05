@@ -30,12 +30,9 @@ export default function Header() {
       const currentScroll = window.scrollY;
 
       if (window.innerWidth >= 768) {
-        // If scrolling down and not at the top, hide
         if (currentScroll > lastScrollY.current && currentScroll > 50) {
           setShowHeader(false);
-        }
-        // If scrolling up, show
-        else if (currentScroll < lastScrollY.current) {
+        } else if (currentScroll < lastScrollY.current) {
           setShowHeader(true);
         }
 
@@ -54,7 +51,6 @@ export default function Header() {
         className={`hidden md:flex top-0 left-0 w-full px-6 py-8 items-center justify-between z-40 transition-transform duration-300 ${showHeader ? 'fixed translate-y-0' : 'absolute -translate-y-full'
           }`}
       >
-
         <div className="text-[#cfb580] text-2xl font-bold uppercase tracking-widest">
           LIGHT HOUSE MEDIA
         </div>
@@ -67,8 +63,8 @@ export default function Header() {
                 key={label}
                 href={href}
                 className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md ${active
-                    ? 'underline decoration-[#cfb580] underline-offset-[6px]'
-                    : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
+                  ? 'underline decoration-[#cfb580] underline-offset-[6px]'
+                  : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
                   }`}
               >
                 {label}
@@ -93,7 +89,14 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* MOBILE HAMBURGER */}
+      {/* MOBILE STICKY BRAND TITLE */}
+      <div className="md:hidden fixed top-0 left-0 w-full z-40 bg-transparent px-6 py-4">
+        <div className="text-[#cfb580] text-xl font-bold uppercase tracking-widest">
+          LIGHT HOUSE MEDIA
+        </div>
+      </div>
+
+      {/* MOBILE HAMBURGER BUTTON */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="md:hidden fixed top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
@@ -103,42 +106,44 @@ export default function Header() {
 
       {/* MOBILE NAV OVERLAY */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
-          <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-6 right-6 bg-[#cfb580] text-black p-3 rounded-full shadow-lg"
-            aria-label="Close menu"
-          >
-            <X className="w-5 h-5" />
-          </button>
-
-          <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
-            {navItems.map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                onClick={() => setIsOpen(false)}
-                className="hover:opacity-80"
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-
-          <a
-            href="https://www.instagram.com/lhmteam"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-10"
-          >
-            <svg
-              className="w-6 h-6 fill-[#cfb580] hover:opacity-80 transition-opacity duration-200"
-              viewBox="0 0 24 24"
+        <>
+          <div className="md:hidden fixed inset-0 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-6 right-6 bg-[#cfb580] text-black p-3 rounded-full shadow-lg z-50"
+              aria-label="Close menu"
             >
-              <path d="M12 2.2c3.2 0 3.6 0 4.9.1..." />
-            </svg>
-          </a>
-        </div>
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
+              {navItems.map(({ label, href }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  className="hover:opacity-80"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+
+            <a
+              href="https://www.instagram.com/lhmteam"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10"
+            >
+              <svg
+                className="w-6 h-6 fill-[#cfb580] hover:opacity-80 transition-opacity duration-200"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 2.2c3.2 0 3.6 0 4.9.1..." />
+              </svg>
+            </a>
+          </div>
+        </>
       )}
     </>
   );
