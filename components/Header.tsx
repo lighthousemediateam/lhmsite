@@ -3,13 +3,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
-  const lastScrollY = useRef(0);
 
   const navItems = [
     { label: 'Home', href: '/' },
@@ -25,32 +23,25 @@ export default function Header() {
     return pathname.startsWith(href);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-
-      if (window.innerWidth >= 768) {
-        if (currentScroll > lastScrollY.current && currentScroll > 50) {
-          setShowHeader(false);
-        } else if (currentScroll < lastScrollY.current) {
-          setShowHeader(true);
-        }
-
-        lastScrollY.current = currentScroll;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <>
-      {/* DESKTOP HEADER */}
-      <div
-        className={`hidden md:flex top-0 left-0 w-full px-6 py-8 items-center justify-between z-40 transition-transform duration-300 ${showHeader ? 'fixed translate-y-0' : 'absolute -translate-y-full'
-          }`}
+      {/* MOBILE sticky brand title */}
+      <div className="md:hidden fixed top-0 left-0 w-full bg-transparent z-40 px-6 py-4">
+        <div className="text-[#cfb580] text-xl font-bold uppercase tracking-widest">
+          LIGHT HOUSE MEDIA
+        </div>
+      </div>
+
+      {/* MOBILE hamburger button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="md:hidden fixed top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
       >
+        {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
+      </button>
+
+      {/* DESKTOP header */}
+      <header className="hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between">
         <div className="text-[#cfb580] text-2xl font-bold uppercase tracking-widest">
           LIGHT HOUSE MEDIA
         </div>
@@ -58,13 +49,15 @@ export default function Header() {
         <nav className="flex items-center gap-6 text-lg uppercase font-semibold">
           {navItems.map(({ label, href }) => {
             const active = isExactActive(href);
+
             return (
               <Link
                 key={label}
                 href={href}
-                className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md ${active
-                  ? 'underline decoration-[#cfb580] underline-offset-[6px]'
-                  : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
+                className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md
+                  ${active
+                    ? 'underline decoration-[#cfb580] underline-offset-[6px]'
+                    : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
                   }`}
               >
                 {label}
@@ -72,6 +65,7 @@ export default function Header() {
             );
           })}
 
+          {/* Instagram Icon */}
           <a
             href="https://www.instagram.com/lhmteam"
             target="_blank"
@@ -87,63 +81,49 @@ export default function Header() {
             </svg>
           </a>
         </nav>
-      </div>
+      </header>
 
-      {/* MOBILE STICKY BRAND TITLE */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-40 bg-transparent px-6 py-4">
-        <div className="text-[#cfb580] text-xl font-bold uppercase tracking-widest">
-          LIGHT HOUSE MEDIA
-        </div>
-      </div>
-
-      {/* MOBILE HAMBURGER BUTTON */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed top-4 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
-      >
-        {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
-      </button>
-
-      {/* MOBILE NAV OVERLAY */}
+      {/* MOBILE overlay menu */}
       {isOpen && (
-        <>
-          <div className="md:hidden fixed inset-0 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 bg-[#cfb580] text-black p-3 rounded-full shadow-lg z-50"
-              aria-label="Close menu"
-            >
-              <X className="w-5 h-5" />
-            </button>
+        <div className="md:hidden fixed inset-0 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
+          {/* Close button */}
+          <button
+            onClick={() => setIsOpen(false)}
+            className="absolute top-6 right-6 bg-[#cfb580] text-black p-3 rounded-full shadow-lg z-50"
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
 
-            <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
-              {navItems.map(({ label, href }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  onClick={() => setIsOpen(false)}
-                  className="hover:opacity-80"
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-
-            <a
-              href="https://www.instagram.com/lhmteam"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10"
-            >
-              <svg
-                className="w-6 h-6 fill-[#cfb580] hover:opacity-80 transition-opacity duration-200"
-                viewBox="0 0 24 24"
+          {/* Nav links */}
+          <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
+            {navItems.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={() => setIsOpen(false)}
+                className="hover:opacity-80"
               >
-                <path d="M12 2.2c3.2 0 3.6 0 4.9.1..." />
-              </svg>
-            </a>
+                {label}
+              </Link>
+            ))}
           </div>
-        </>
+
+          {/* Instagram icon */}
+          <a
+            href="https://www.instagram.com/lhmteam"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10"
+          >
+            <svg
+              className="w-6 h-6 fill-[#cfb580] hover:opacity-80 transition-opacity duration-200"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2.2c3.2 0 3.6 0 4.9.1..." />
+            </svg>
+          </a>
+        </div>
       )}
     </>
   );
