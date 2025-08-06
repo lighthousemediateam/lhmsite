@@ -8,44 +8,43 @@ const workItems = [
         href: '/work/reign',
         cover: 'https://www.lhmcollective.com/s/Screenshot-2025-07-09-at-50910PM.png',
         video: 'https://lhmcollective.b-cdn.net/REIGN%20Preview.mp4',
-        logo: 'https://www.lhmcollective.com/s/REIGN_Grayscale_Branding_2019_Positive_Horizontal.png',
+        logo: 'https://lhmcollective.b-cdn.net/Logos/REIGN_White_Text_Transparent.png',
     },
     {
         href: '/work/reign-storm',
         cover: 'https://www.lhmcollective.com/s/Screenshot-2025-07-09-at-53242PM.png',
         video: 'https://lhmcollective.b-cdn.net/RS%20Preview.mp4',
-        logo: 'https://www.lhmcollective.com/s/reign_storm_logo_final_cleaned_v3.png',
+        logo: 'https://lhmcollective.b-cdn.net/Logos/reign_storm_logo_final_cleaned_v3.png',
     },
-    // Add more projects here...
     {
         href: '/work/recess',
         cover: 'https://www.lhmcollective.com/s/Screenshot-2025-07-12-at-44610PM.png',
         video: 'https://lhmcollective.b-cdn.net/Class%20at%20Recess%20Preview.mp4',
-        logo: 'https://www.lhmcollective.com/s/RecessLogo_RVersion_NoBox_White_300dpi_F-xftj.png',
+        logo: 'https://lhmcollective.b-cdn.net/Logos/RecessLogo_RVersion_NoBox_White_300dpi_F.png',
     },
     {
         href: '/work/avondale',
         cover: 'https://lhmcollective.b-cdn.net/avondale%20cover%20photo(small).jpg',
         video: 'https://lhmcollective.b-cdn.net/Spyder%20Preview.mp4',
-        logo: 'https://www.lhmcollective.com/s/avondale-logo.png',
+        logo: 'https://lhmcollective.b-cdn.net/Logos/avondale%20logo.png',
     },
     {
         href: "/work/itdrc",
         cover: 'https://lhmcollective.b-cdn.net/ITDRC%20cover%20photo.png',
         video: 'https://lhmcollective.b-cdn.net/ITDRC%20Preview.mp4',
-        logo: 'https://www.lhmcollective.com/s/itdrc_logo_white.png',
+        logo: 'https://lhmcollective.b-cdn.net/Logos/itdrc_logo_white.png',
     },
     {
         href: '/work/virgin',
         cover: 'https://lhmcollective.b-cdn.net/Virgin%20cover%20photo.png',
         video: 'https://lhmcollective.b-cdn.net/Virgin%20Preview%202.mp4',
-        logo: 'https://www.lhmcollective.com/s/virgin-hotel-logo.png',
+        logo: 'https://lhmcollective.b-cdn.net/Logos/virgin%20hotel%20logo.png',
     },
     {
         href: '/work/cuisinart',
         cover: 'https://lhmcollective.b-cdn.net/cuisinart%20cover%20photo.jpg',
         video: 'https://lhmcollective.b-cdn.net/Cuisinart%20Preview.mp4',
-        logo: 'https://www.lhmcollective.com/s/cuisnart-logo.png',
+        logo: 'https://lhmcollective.b-cdn.net/Logos/cuisnart%20logo.png',
     },
     {
         href: '/work/blackhawk',
@@ -53,9 +52,9 @@ const workItems = [
         video: 'https://lhmcollective.b-cdn.net/Black%20Hawk%20Preview.mp4',
         logo: 'https://lhmcollective.b-cdn.net/Blackhawk%20logo%20v2.png',
     },
-
-
 ];
+
+
 
 export default function WorkPage() {
     useEffect(() => {
@@ -112,12 +111,14 @@ export default function WorkPage() {
                                 <img
                                     src={item.cover}
                                     alt="cover"
-                                    className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-300 group-hover:opacity-0 hidden md:block"
+                                   className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-300 group-hover:opacity-0 hidden md:block filter brightness-[0.6]"
+
                                 />
 
                                 {/* Video */}
                                 <video
-                                    className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 lazy-video"
+                                    className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-300 opacity-50 group-hover:opacity-100 lazy-video"
+
                                     muted
                                     playsInline
                                     autoPlay
@@ -132,7 +133,8 @@ export default function WorkPage() {
                                 <img
                                     src={item.logo}
                                     alt="logo"
-                                    className="absolute top-1/2 left-1/2 w-[30%] max-w-[240px] transform -translate-x-1/2 -translate-y-1/2 z-20 opacity-90 pointer-events-none transition-opacity duration-[2000ms] group-hover:opacity-0"
+                                   className="absolute top-1/2 left-1/2 w-[49%] max-w-[312px] transform -translate-x-1/2 -translate-y-1/2 z-20 opacity-90 pointer-events-none transition-opacity duration-[2000ms] group-hover:opacity-0"
+
                                 />
                             </div>
                         </a>
