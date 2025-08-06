@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Dallas Videographer | Light House Media",
+  description: "Professional videography in Dallas for brands, events, and real estate.",
+};
 
 import Link from 'next/link';
 import ClientBanner from '../components/ClientBanner';

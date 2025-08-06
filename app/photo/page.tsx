@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Dallas Photographer | Light House Media",
+  description: "Professional Photography based in Dallas, Texas for brands, events, and real estate.",
+};
+
 'use client';
 
 import React from 'react';

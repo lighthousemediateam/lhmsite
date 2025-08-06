@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Dallas based Videographer | Light House Media",
+  description: "Professional videography and Photography in Dallas for brands, events, gyms, fitness centers, lawyers, corporate parties, drone work, and real estate.",
+};
+
 'use client';
 
 import { useEffect } from 'react';
