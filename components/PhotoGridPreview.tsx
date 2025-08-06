@@ -23,10 +23,8 @@ const gridItems: GridItem[] = Array.from({ length: photoUrls.length }, (_, i) =>
 
 export default function PhotoGridPreview() {
   return (
-    <div className="w-screen max-w-none px-4 py-20">
-      <p className="text-center text-sm text-[#cfb580] mb-6">
-        Showing {photoUrls.length} items
-      </p>
+    <div className="w-screen max-w-none px-4 py-40">
+      
 
       <div className="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] auto-rows-[300px] grid-flow-dense gap-6">
         {gridItems.map(({ id, span }) => {
