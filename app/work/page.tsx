@@ -1,10 +1,6 @@
-export const metadata = {
-  title: "Dallas based Videographer | Light House Media",
-  description: "Professional videography and Photography in Dallas for brands, events, gyms, fitness centers, lawyers, corporate parties, drone work, and real estate.",
-};
 
 'use client';
-
+import Head from 'next/head';
 import { useEffect } from 'react';
 
 const workItems = [
@@ -89,41 +85,59 @@ export default function WorkPage() {
     }, []);
 
     return (
-        <div className="bg-[#1a191b] text-[#cfb580] min-h-screen px-0 pt-28 pb-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                {workItems.map((item, idx) => (
-                    <a href={item.href} key={idx} className="block group">
-                        <div className="relative aspect-video overflow-hidden">
-                            {/* Cover Image */}
-                            <img
-                                src={item.cover}
-                                alt="cover"
-                                className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-300 group-hover:opacity-0 hidden md:block"
-                            />
+        <>
+            <Head>
+                <title>Dallas Videographer | Light House Media</title>
+                <meta
+                    name="description"
+                    content="Professional videography and photography in Dallas for brands, events, gyms, lawyers, corporate parties, drone work, and real estate."
+                />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content="Dallas Videographer | Light House Media" />
+                <meta
+                    property="og:description"
+                    content="Professional video and photo production in Dallas, TX."
+                />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.lhmcollective.com/work" />
+                <meta property="og:image" content="https://www.lhmcollective.com/og-preview.jpg" />
+            </Head>
 
-                            {/* Video */}
-                            <video
-                                className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 lazy-video"
-                                muted
-                                playsInline
-                                autoPlay
-                                loop
-                                preload="none"
-                                poster={item.cover}
-                            >
-                                <source data-src={item.video} type="video/mp4" />
-                            </video>
+            <div className="bg-[#1a191b] text-[#cfb580] min-h-screen px-0 pt-28 pb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                    {workItems.map((item, idx) => (
+                        <a href={item.href} key={idx} className="block group">
+                            <div className="relative aspect-video overflow-hidden">
+                                {/* Cover Image */}
+                                <img
+                                    src={item.cover}
+                                    alt="cover"
+                                    className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-300 group-hover:opacity-0 hidden md:block"
+                                />
 
-                            {/* Logo */}
-                            <img
-                                src={item.logo}
-                                alt="logo"
-                                className="absolute top-1/2 left-1/2 w-[30%] max-w-[240px] transform -translate-x-1/2 -translate-y-1/2 z-20 opacity-90 pointer-events-none transition-opacity duration-[2000ms] group-hover:opacity-0"
-                            />
-                        </div>
-                    </a>
-                ))}
+                                {/* Video */}
+                                <video
+                                    className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-300 opacity-0 group-hover:opacity-100 lazy-video"
+                                    muted
+                                    playsInline
+                                    autoPlay
+                                    loop
+                                    preload="none"
+                                    poster={item.cover}
+                                >
+                                    <source data-src={item.video} type="video/mp4" />
+                                </video>
+
+                                {/* Logo */}
+                                <img
+                                    src={item.logo}
+                                    alt="logo"
+                                    className="absolute top-1/2 left-1/2 w-[30%] max-w-[240px] transform -translate-x-1/2 -translate-y-1/2 z-20 opacity-90 pointer-events-none transition-opacity duration-[2000ms] group-hover:opacity-0"
+                                />
+                            </div>
+                        </a>
+                    ))}
+                </div>
             </div>
-        </div>
+        </>
     );
-}
