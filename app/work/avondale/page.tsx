@@ -1,55 +1,73 @@
 export default function AvondalePage() {
-    return (
-        <div className="bg-[#1a191b] text-[#cfb580] min-h-screen">
-            {/* Page Title */}
-            <div className="text-center pt-34">
-                <h1 className="text-7xl font-bold uppercase tracking-wide">AVONDALE</h1>
-            </div>
+  return (
+    <div className="bg-[#1a191b] text-[#cfb580] min-h-screen">
+      {/* Page Title */}
+      <div className="text-center pt-34">
+        <h1 className="text-7xl font-bold uppercase tracking-wide">AVONDALE</h1>
+      </div>
 
-            {/* Hero Video */}
-            <div className="w-full max-w-[1200px] aspect-video mx-auto mt-20 overflow-hidden bg-black">
-                <video
-                    className="w-full h-full object-cover block"
-                    controls
-                    playsInline
-                    loop
-                    preload="auto"
-                    poster="https://via.placeholder.com/1280x720?text=AVONDALE+Poster"
-                >
-                    <source src="https://lhmcollective.b-cdn.net/Avondale%20918%20Spyder.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+      {/* Hero Video */}
+      <div className="w-full max-w-[1200px] aspect-video mx-auto mt-20 overflow-hidden bg-black">
+        <video
+          className="w-full h-full object-cover block"
+          controls
+          playsInline
+          loop
+          preload="auto"
+          poster="https://lhmcollective.b-cdn.net/avondale%20poster.jpg"
+        >
+          <source src="https://lhmcollective.b-cdn.net/Avondale%20918%20Spyder.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-            {/* Frames Section */}
-            <div className="w-full px-0 py-12">
-                <h2 className="text-sm uppercase tracking-wide mb-5 border-t border-[#cfb580] pt-2 inline-block ml-6">
-                    Photography
-                </h2>
+      {/* SEO Body Text */}
+      <div className="max-w-[900px] mx-auto mt-16 px-6 text-base leading-relaxed text-[#cfb580]/90">
+        <h2 className="text-2xl font-semibold uppercase tracking-wide mb-4">
+          Client: Avondale
+        </h2>
+        <p>
+          Avondale Dealerships, a luxury automotive group based in Dallas, TX, partnered with us from 2020 to 2023 to create dynamic content for some of the world’s most prestigious car brands, including Porsche, Aston Martin, Mercedes-Benz, Maserati, McLaren, Rolls-Royce, and Bentley.
+        </p>
+        <br />
+        <p>
+          Our work spanned across talking-head videos introducing new car features, promotional videos, lifestyle photography, and social media content tailored to trend and brand identity. While performance metrics weren’t the primary focus at the time, our role was to elevate their digital presence with high-quality content.
+        </p>
+        <br />
+        <p>
+          This collaboration allowed us to apply our creative approach across multiple dealerships while capturing the elegance, innovation, and individuality that define each luxury brand under the Avondale umbrella.
+        </p>
+      </div>
 
-                <div className="grid grid-cols-2 gap-0">
-                    <img
-                        src="https://via.placeholder.com/800x600?text=Frame+1"
-                        alt="Placeholder Frame 1"
-                        className="w-full h-full object-cover"
-                    />
-                    <img
-                        src="https://via.placeholder.com/800x600?text=Frame+2"
-                        alt="Placeholder Frame 2"
-                        className="w-full h-full object-cover"
-                    />
-                    <img
-                        src="https://via.placeholder.com/800x600?text=Frame+3"
-                        alt="Placeholder Frame 3"
-                        className="w-full h-full object-cover"
-                    />
-                    <img
-                        src="https://via.placeholder.com/800x600?text=Frame+4"
-                        alt="Placeholder Frame 4"
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-            </div>
+      {/* Frames Section */}
+      <div className="w-full px-0 py-12">
+        <h2 className="text-sm uppercase tracking-wide mb-5 border-t border-[#cfb580] pt-2 inline-block ml-6">
+          Photography
+        </h2>
+
+        <div className="grid grid-cols-2 gap-0">
+          <img
+            src="https://via.placeholder.com/800x600?text=Frame+1"
+            alt="Luxury vehicle detail photo by Light House Media"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="https://via.placeholder.com/800x600?text=Frame+2"
+            alt="Branded car lifestyle shoot for Avondale Dealerships"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="https://via.placeholder.com/800x600?text=Frame+3"
+            alt="McLaren feature highlight photography by Light House Media"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="https://via.placeholder.com/800x600?text=Frame+4"
+            alt="Premium dealership content for Avondale's luxury fleet"
+            className="w-full h-full object-cover"
+          />
         </div>
-    );
+      </div>
+    </div>
+  );
 }
