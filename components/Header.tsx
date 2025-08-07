@@ -3,11 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const lastScrollY = useRef(0);
 
   const navItems = [
     { label: 'Home', href: '/' },
@@ -23,28 +25,59 @@ export default function Header() {
     return pathname.startsWith(href);
   };
 
+  // Scroll handler
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Only apply behavior on desktop
+      if (window.innerWidth >= 768) {
+        if (currentScrollY < lastScrollY.current) {
+          setIsScrollingUp(true); // Scrolling up
+        } else {
+          setIsScrollingUp(false); // Scrolling down
+        }
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      {/* MOBILE scrollable brand title */}
+      {/* MOBILE brand title */}
       <div className="md:hidden px-6 py-4">
-        <div className="text-[#cfb580] text-xl font-bold uppercase tracking-widest">
+        <Link
+          href="/"
+          className="text-[#cfb580] text-xl font-bold uppercase tracking-widest hover:opacity-80"
+        >
           LIGHT HOUSE MEDIA
-        </div>
+        </Link>
       </div>
 
       {/* MOBILE fixed hamburger icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed top-2 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
+        className="md:hidden fixed top-1 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
       >
         {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
       </button>
 
-      {/* DESKTOP header */}
-      <header className="hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between">
-        <div className="text-[#cfb580] text-2xl font-bold uppercase tracking-widest">
+      {/* DESKTOP header with scroll show/hide */}
+      <header
+        className={`hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between transition-transform duration-300 ${
+          isScrollingUp ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <Link
+          href="/"
+          className="text-[#cfb580] text-2xl font-bold uppercase tracking-widest hover:opacity-80"
+        >
           LIGHT HOUSE MEDIA
-        </div>
+        </Link>
 
         <nav className="flex items-center gap-6 text-lg uppercase font-semibold">
           {navItems.map(({ label, href }) => {
@@ -54,9 +87,10 @@ export default function Header() {
                 key={label}
                 href={href}
                 className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md
-                ${active
-                    ? 'underline decoration-[#cfb580] underline-offset-[6px]'
-                    : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
+                  ${
+                    active
+                      ? 'underline decoration-[#cfb580] underline-offset-[6px]'
+                      : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
                   }`}
               >
                 {label}
@@ -114,5 +148,4 @@ export default function Header() {
       )}
     </>
   );
-
 }
