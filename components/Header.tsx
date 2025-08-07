@@ -25,14 +25,15 @@ export default function Header() {
     return pathname.startsWith(href);
   };
 
-  // Scroll handler
+  // Scroll behavior for desktop only
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Only apply behavior on desktop
       if (window.innerWidth >= 768) {
-        if (currentScrollY < lastScrollY.current) {
+        if (currentScrollY === 0) {
+          setIsScrollingUp(true); // Always show header at very top
+        } else if (currentScrollY < lastScrollY.current) {
           setIsScrollingUp(true); // Scrolling up
         } else {
           setIsScrollingUp(false); // Scrolling down
@@ -66,7 +67,7 @@ export default function Header() {
         {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
       </button>
 
-      {/* DESKTOP header with scroll show/hide */}
+      {/* DESKTOP header with scroll behavior */}
       <header
         className={`hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between transition-transform duration-300 ${
           isScrollingUp ? 'translate-y-0' : '-translate-y-full'
@@ -86,12 +87,11 @@ export default function Header() {
               <Link
                 key={label}
                 href={href}
-                className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md
-                  ${
-                    active
-                      ? 'underline decoration-[#cfb580] underline-offset-[6px]'
-                      : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
-                  }`}
+                className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md ${
+                  active
+                    ? 'underline decoration-[#cfb580] underline-offset-[6px]'
+                    : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
+                }`}
               >
                 {label}
               </Link>
