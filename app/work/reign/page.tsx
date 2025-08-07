@@ -26,7 +26,7 @@ export default function REIGNPage() {
 
             {/* Video Description */}
             {/* SEO Body Text */}
-            <div className="max-w-[900px] mx-auto mt-16 px-6 text-base leading-relaxed text-[#cfb580]/90">
+            <div className="max-w-[900px] mx-auto mt-16 px-6 text- [1.195rem] leading-relaxed text-[#cfb580]/90">
                 <h2 className="text-2xl font-semibold uppercase tracking-wide mb-4">
                     Client: REIGN Body Fuel
                 </h2>
