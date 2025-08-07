@@ -27,16 +27,22 @@ export default function Header() {
 
   // Scroll behavior for desktop only
   useEffect(() => {
+    const threshold = 10; // Ignore scroll changes smaller than 10px
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (window.innerWidth >= 768) {
-        if (currentScrollY === 0) {
-          setIsScrollingUp(true); // Always show header at very top
-        } else if (currentScrollY < lastScrollY.current) {
-          setIsScrollingUp(true); // Scrolling up
-        } else {
-          setIsScrollingUp(false); // Scrolling down
+        const scrollDiff = currentScrollY - lastScrollY.current;
+
+        if (currentScrollY <= 0) {
+          setIsScrollingUp(true); // Always show at very top
+        } else if (Math.abs(scrollDiff) > threshold) {
+          if (scrollDiff < 0) {
+            setIsScrollingUp(true); // Scrolling up
+          } else {
+            setIsScrollingUp(false); // Scrolling down
+          }
         }
       }
 
@@ -69,9 +75,8 @@ export default function Header() {
 
       {/* DESKTOP header with scroll behavior */}
       <header
-        className={`hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between transition-transform duration-300 ${
-          isScrollingUp ? 'translate-y-0' : '-translate-y-full'
-        }`}
+        className={`hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between transition-transform duration-300 ${isScrollingUp ? 'translate-y-0' : '-translate-y-full'
+          }`}
       >
         <Link
           href="/"
@@ -87,11 +92,10 @@ export default function Header() {
               <Link
                 key={label}
                 href={href}
-                className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md ${
-                  active
+                className={`relative px-4 py-2 text-[#cfb580] transition-all duration-300 rounded-md ${active
                     ? 'underline decoration-[#cfb580] underline-offset-[6px]'
                     : 'hover:bg-[#cfb580]/40 hover:translate-x-[2px] hover:translate-y-[4px]'
-                }`}
+                  }`}
               >
                 {label}
               </Link>
