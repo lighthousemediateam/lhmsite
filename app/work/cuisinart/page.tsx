@@ -21,6 +21,24 @@ export default function CuisinartPage() {
                 </video>
             </div>
 
+            {/* SEO Body Text */}
+            <div className="max-w-[900px] mx-auto mt-16 px-6 text-[1.195rem] leading-relaxed text-[#cfb580]/90">
+                <h2 className="text-4xl font-semibold uppercase tracking-wide mb-4">
+                    Client: Cuisinart
+                </h2>
+                <p>
+                    In 2021, we partnered with Cuisinart, a leading name in culinary tools and kitchen innovation, on a one-off video project to help launch one of their new products.
+                </p>
+                <br />
+                <p>
+                    Shot in Dallas, Texas, the campaign was produced in collaboration with Area Code agency and directed alongside our friend, Colin Conley. Our role focused on videography—producing multiple promotional videos that showcased the product’s design, features, and lifestyle appeal in a way that felt fresh and accessible.
+                </p>
+                <br />
+                <p>
+                    Known for empowering home cooks and food lovers with reliable, stylish appliances, Cuisinart’s legacy made this project a unique opportunity to blend premium visuals with everyday functionality — helping bring their brand to life through content built for modern platforms.
+                </p>
+            </div>
+
             {/* Frames Section */}
             <div className="w-full px-0 py-12">
                 <h2 className="text-sm uppercase tracking-wide mb-5 border-t border-[#cfb580] pt-2 inline-block ml-6">

@@ -21,6 +21,24 @@ export default function VirginPage() {
                 </video>
             </div>
 
+            {/* SEO Body Text */}
+            <div className="max-w-[900px] mx-auto mt-16 px-6 text- [1.195rem] leading-relaxed text-[#cfb580]/90">
+                <h2 className="text-4xl font-semibold uppercase tracking-wide mb-4">
+                    Client: Virgin Hotels Dallas
+                </h2>
+                <p>
+                    We partnered with Virgin Hotels Dallas to create visually engaging promotional content during a uniquely challenging time in 2020 and 2021. Our primary focus was videography, producing sleek, upbeat videos to help promote the hotel and its pool club experience—even during the height of COVID restrictions.
+                </p>
+                <br />
+                <p>
+                    These assets were crafted specifically for social media, helping the brand stay top-of-mind, showcase its lifestyle appeal, and maintain a digital presence while in-person traffic fluctuated.
+                </p>
+                <br />
+                <p>
+                    By capturing the energy, vibe, and atmosphere of the space, our content helped Virgin Hotels continue connecting with its audience and drive engagement when it mattered most.
+                </p>
+            </div>
+
             {/* Frames Section */}
             <div className="w-full px-0 py-12">
                 <h2 className="text-sm uppercase tracking-wide mb-5 border-t border-[#cfb580] pt-2 inline-block ml-6">
@@ -30,22 +48,22 @@ export default function VirginPage() {
                 <div className="grid grid-cols-2 gap-0">
                     <img
                         src="https://via.placeholder.com/800x600?text=Frame+1"
-                        alt="Placeholder Frame 1"
+                        alt="Virgin Hotels lifestyle photo 1"
                         className="w-full h-full object-cover"
                     />
                     <img
                         src="https://via.placeholder.com/800x600?text=Frame+2"
-                        alt="Placeholder Frame 2"
+                        alt="Virgin Hotels lifestyle photo 2"
                         className="w-full h-full object-cover"
                     />
                     <img
                         src="https://via.placeholder.com/800x600?text=Frame+3"
-                        alt="Placeholder Frame 3"
+                        alt="Virgin Hotels lifestyle photo 3"
                         className="w-full h-full object-cover"
                     />
                     <img
                         src="https://via.placeholder.com/800x600?text=Frame+4"
-                        alt="Placeholder Frame 4"
+                        alt="Virgin Hotels lifestyle photo 4"
                         className="w-full h-full object-cover"
                     />
                 </div>
