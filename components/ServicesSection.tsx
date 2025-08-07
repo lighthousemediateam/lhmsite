@@ -4,47 +4,32 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { serviceSteps } from './ServiceSteps';
 
-const useWindowWidth = () => {
-    const [width, setWidth] = useState<number | null>(null);
-
-    useEffect(() => {
-        const updateWidth = () => setWidth(window.innerWidth);
-        updateWidth(); // Set on mount
-
-        window.addEventListener('resize', updateWidth);
-        return () => window.removeEventListener('resize', updateWidth);
-    }, []);
-
-    return width;
-};
-
 const ServicesSection: React.FC = () => {
     const pathRef = useRef(null);
+    const textBlockRef = useRef<HTMLDivElement | null>(null);
     const isInView = useInView(pathRef, { once: true, margin: '-100px' });
-    const width = useWindowWidth();
+    const [arrowLeft, setArrowLeft] = useState<number | null>(null);
 
-    const getLeftOffset = () => {
-        if (width === null) return 750;     // fallback
-        if (width <= 500) return null;      // hide on tiny screens
-        if (width <= 640) return 140;       // phones
-        if (width <= 768) return 200;       // small tablets
-        if (width <= 1024) return 300;      // iPads and older laptops
-        if (width <= 1280) return 370;      // 13" MacBooks
-        if (width <= 1440) return 430;      // 14" MacBook Pro
-        if (width <= 1728) return 350;      // 16" MacBook Pro
-        if (width <= 1920) return 580;      // HD desktop
-        return 750;                         // ultrawide / 4K
-    };
+    useEffect(() => {
+        const updateArrowPosition = () => {
+            if (textBlockRef.current) {
+                const rect = textBlockRef.current.getBoundingClientRect();
+                setArrowLeft(rect.left - 190); // tweak offset to visually align the arrow path
+            }
+        };
 
-    const leftOffset = getLeftOffset();
+        updateArrowPosition();
+        window.addEventListener('resize', updateArrowPosition);
+        return () => window.removeEventListener('resize', updateArrowPosition);
+    }, []);
 
     return (
         <section className="w-full py-28 px-4">
             <div ref={pathRef} className="relative flex flex-col items-center">
                 {/* SVG Arrow Path */}
-                {leftOffset !== null && (
+                {arrowLeft !== null && (
                     <svg
-                        style={{ position: 'absolute', top: -50, left: `${leftOffset}px`, zIndex: 0 }}
+                        style={{ position: 'absolute', top: -50, left: `${arrowLeft}px`, zIndex: 0 }}
                         width="240"
                         height="800"
                         viewBox="-100 0 300 800"
@@ -93,7 +78,11 @@ const ServicesSection: React.FC = () => {
                 {/* Step Content */}
                 <div className="flex flex-col gap-24 items-center w-fit">
                     {serviceSteps.map((step, index) => (
-                        <div key={index} className="flex items-start gap-6 md:gap-12">
+                        <div
+                            key={index}
+                            className="flex items-start gap-6 md:gap-12"
+                            ref={index === 0 ? textBlockRef : undefined}
+                        >
                             {/* Step Number */}
                             <div className="min-w-[60px] text-right pt-1 relative z-10">
                                 <span className="text-2xl sm:text-3xl font-bold text-[#cfb580] leading-none">
