@@ -179,7 +179,7 @@ export default function UGCPage() {
           Ready To Take Your Brand To The Next Level? Click Below Now
         </p>
         <a
-          href="/contact"
+          href="/consult"
           className="inline-block px-8 py-3 border border-[#cfb580] rounded-full text-[#cfb580] hover:bg-[#cfb580] hover:text-[#1a191b] transition"
         >
           Get In Touch
