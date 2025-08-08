@@ -31,34 +31,98 @@ const reels = [
     views: '14.4M',
     link: 'https://www.instagram.com/RecessDallas/',
   },
-  {
-    src: 'https://lhmcollective.b-cdn.net/ugc/video-4.mp4',
-    name: 'Dr. Vo',
-    handle: '@drvo.skin',
-    followers: '250k',
-    caption: '“We doubled signups in under 48 hours.”',
-    views: '3.1M',
-    link: 'https://www.instagram.com/drvo.skin/',
-  },
-  {
-    src: 'https://lhmcollective.b-cdn.net/ugc/video-5.mp4',
-    name: 'Elena, Brand Manager',
-    handle: '@glowhaus',
-    followers: '410k',
-    caption: '“It outperformed our paid ads.”',
-    views: '5M',
-    link: 'https://www.instagram.com/glowhaus/',
-  },
-  {
-    src: 'https://lhmcollective.b-cdn.net/ugc/video-6.mp4',
-    name: 'Mark from BoldFit',
-    handle: '@boldfit.mark',
-    followers: '990k',
-    caption: '“Insane engagement on this one.”',
-    views: '7.2M',
-    link: 'https://www.instagram.com/boldfit.mark/',
-  },
+
+
+// New UGC entries to append to `reels`
+{
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/VIrginia-ugc-video-light-house-media-dallas-videographer.MP4', // TODO: replace with Bunny MP4
+  name: 'Virginia SanHouse',
+  handle: '@virginiasanhouse', // if you want it shown, add like '@virginiasanhouse'
+  followers: '2.4M',
+  caption: "Great Results",
+  views: '996k',
+  link: 'https://www.instagram.com/reel/C9u4p2ORrRk/?igsh=MXc3aWsydjhna3ZwbA==',
+ // optional
+},
+{
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/the-hopeaholics-podcast-ugc-video-light-house-media-dallas-videographer.MP4', // TODO
+  name: 'The Hopeaholics',
+  handle: '@thehopeaholics',
+  followers: '326k',
+  caption: "Great Results",
+  views: '680k',
+  link: 'https://www.instagram.com/reel/CzHj1M7ypQX/?igsh=ZXVzMTdsaTF3NWw3',
+}, 
+{
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/NEM-event-ugc-video-light-house-media-dallas-videographer.MP4', // TODO
+  name: 'Natalie Eva Marie',
+  handle: '@natalieevamarie',
+  followers: '6M',
+  caption: "Great Results",
+  views: '5.8M',
+  link: 'https://www.instagram.com/reel/Cry7APhgbHZ/?igsh=ZGluc2Y1ZTRweTM3',
+ 
+},
+{
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/jakepaul-miketyson-mvp-dallas-event-ugc-light-house-media-videographer.mp4', // TODO
+  name: 'Raphamilagres',
+  handle: '@raphamilagres',
+  followers: '184k',
+  caption: "Great Results",
+  views: '453k',
+  link: 'https://www.instagram.com/reel/DCc81bWS3JZ/?igsh=MTNuYjI2M2xteWk3bA==',
+  
+},
+{
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/Thor-reign-ugc-video-lighthousemedia.MP4', // TODO
+  name: 'Thor Bjornson',
+  handle: '@hafthorbjornsson',
+  followers: '1.5M',
+  caption: "Great Results",
+  views: '996k',
+  link: 'https://www.tiktok.com/t/ZPHsyc12njn3D-uDYcR/',
+}, 
+{
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/Kai-Greene-reign-ugc-video-light-house-media-dallas-videographer.MP4', // TODO
+  name: 'Kai Greene',
+  handle: '@Kaigreene',
+  followers: '7.1M',
+  caption: "Great Results",
+  views: '1.1Mk',
+  link: 'https://www.instagram.com/reel/CzOdSZ3OGQM/?igsh=cnZzeWxwYTNqdGdh',
+ 
+},
+{
+  src: 'https://lhmcollective.b-cdn.net/ugc/reign-uk.mp4', // TODO
+  name: 'REIGN UK',
+  handle: '@reignbodyfueleurope',
+  followers: '25.5k',
+  caption: "Great Results",
+  views: '805k',
+  link: 'https://www.instagram.com/reel/CnKEcnJpYfn/?igsh=MXhzcHQ1MXRzYWp3bg==',
+  
+},
+{
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/Arnold-event-ugc-video-light-house-media-dallas-videographer.MP4', // TODO
+  name: 'Arnold Sports',
+  handle: '@arnoldsports',
+  followers: '1.8M',
+  caption: "Great Results",
+  views: '122k',
+  link: 'https://www.instagram.com/reel/C4BI7ZLOiUJ/?igsh=MWl1dnF2OTk3MHEzcA==',
+  
+},
+
+
+
+
+
+
+
+
 ];
+
+
 
 export default function UGCPage() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
