@@ -4,19 +4,18 @@
 import React from "react";
 import Script from "next/script";
 
-// Calendly event URL — replace with your actual
+// 🔧 Replace with your actual Calendly event URL
 const CALENDLY_URL =
-  "https://calendly.com/YOUR_HANDLE/60min?hide_gdpr_banner=1&background_color=1a191b&primary_color=cfb580";
+  "https://calendly.com/lighthousemediamgmt/30min?hide_gdpr_banner=1&background_color=1a191b&primary_color=cfb580";
 
 // QuickBooks payment link (yours)
 const QB_URL =
   "https://connect.intuit.com/portal/app/CommerceNetwork/view/scs-v1-8813a85c1b8a403dbafc7a584d09f514a3ebe7daf108485987c0603d1857092c1596d1fd254c4717949d7aaaf8f32a4c?locale=EN_US";
 
-// EmailJS config
-const EMAILJS_SERVICE_ID = "service_21ld30f";
-// TIP: if you created a dedicated consult template, set it here instead of template_bss730h
-const EMAILJS_TEMPLATE_ID = "template_bss730h";
-const EMAILJS_PUBLIC_KEY = "xtBfTgfimdpJMj4hv";
+// EmailJS config — NEW ACCOUNT
+const EMAILJS_SERVICE_ID = "service_4zvmtkm";
+const EMAILJS_TEMPLATE_ID = "template_zubtnp2";
+const EMAILJS_PUBLIC_KEY = "B81a9jS8XplNaMdaj";
 
 // Build Calendly URL with prefill + custom answers
 function buildCalendlyUrl({
@@ -25,7 +24,7 @@ function buildCalendlyUrl({
   company,
   instagram,
   address,
-  phone,
+  phone,     // ✅ include phone here
   message,
 }: {
   name: string;
@@ -39,7 +38,8 @@ function buildCalendlyUrl({
   const params = new URLSearchParams();
   if (name) params.set("name", name);
   if (email) params.set("email", email);
-  // Custom question answers a1..a5 (ensure your Calendly event questions match this order)
+  // Ensure your Calendly event has custom questions in this order:
+  // 1) Company  2) Instagram  3) Address  4) Phone  5) Short message
   if (company) params.set("a1", company);
   if (instagram) params.set("a2", instagram);
   if (address) params.set("a3", address);
@@ -73,7 +73,7 @@ export default function ConsultAnswerPage() {
       const payload = {
         from_name: name,
         company,
-        instagram,       // <- changed
+        instagram,
         address,
         reply_to: email,
         phone,
@@ -94,13 +94,13 @@ export default function ConsultAnswerPage() {
         name,
         email,
         company,
-        instagram, // <- changed
+        instagram,
         address,
         phone,
         message,
       });
 
-      // @ts-expect-error calendly global
+      // @ts-expect-error Calendly global
       if (window.Calendly) {
         // @ts-expect-error
         window.Calendly.initPopupWidget({ url });
