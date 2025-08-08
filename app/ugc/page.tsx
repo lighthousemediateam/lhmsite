@@ -93,7 +93,7 @@ const reels = [
  
 },
 {
-  src: 'https://lhmcollective.b-cdn.net/ugc/reign-uk.mp4', // TODO
+  src: 'https://lhmcollective.b-cdn.net/UGC-Content/REIGN%20UK-ugc-light-house-media-dallas-videographer-event.mp4', // TODO
   name: 'REIGN UK',
   handle: '@reignbodyfueleurope',
   followers: '25.5k',
