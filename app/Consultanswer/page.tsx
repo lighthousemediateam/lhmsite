@@ -4,7 +4,7 @@
 import React from "react";
 import Script from "next/script";
 
-// 🔧 Replace with your actual Calendly event URL
+// Calendly event URL (your real link)
 const CALENDLY_URL =
   "https://calendly.com/lighthousemediamgmt/30min?hide_gdpr_banner=1&background_color=1a191b&primary_color=cfb580";
 
@@ -24,7 +24,7 @@ function buildCalendlyUrl({
   company,
   instagram,
   address,
-  phone,     // ✅ include phone here
+  phone,
   message,
 }: {
   name: string;
@@ -63,6 +63,22 @@ export default function ConsultAnswerPage() {
   const [error, setError] = React.useState<string | null>(null);
   const [done, setDone] = React.useState(false);
 
+  // 👇 Fallback if browser blocks the QuickBooks tab
+  const [showPayFallback, setShowPayFallback] = React.useState(false);
+
+  // Listen for Calendly booking completion, then open QuickBooks
+  React.useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      // Calendly posts messages on window with e.data.event
+      if (e?.data?.event === "calendly.event_scheduled") {
+        const tab = window.open(QB_URL, "_blank", "noopener,noreferrer");
+        if (!tab || tab.closed) setShowPayFallback(true);
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
   const submitAndProceed = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -86,10 +102,7 @@ export default function ConsultAnswerPage() {
 
       setDone(true);
 
-      // 2) Open QuickBooks in a new tab for payment
-      window.open(QB_URL, "_blank", "noopener,noreferrer");
-
-      // 3) Open Calendly popup with prefilled info
+      // 2) Open Calendly popup with prefilled info (NO QuickBooks here)
       const url = buildCalendlyUrl({
         name,
         email,
@@ -100,14 +113,14 @@ export default function ConsultAnswerPage() {
         message,
       });
 
-      // @ts-expect-error Calendly global
+      // @ts-expect-error Calendly injected by script
       if (window.Calendly) {
         // @ts-expect-error
         window.Calendly.initPopupWidget({ url });
       } else {
         window.open(url, "_blank", "noopener,noreferrer");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
       setError("Something went wrong sending your details. Please try again.");
     } finally {
@@ -124,7 +137,7 @@ export default function ConsultAnswerPage() {
       <section className="mx-auto max-w-3xl px-6 pt-28 pb-10 md:pt-36">
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#cfb580]">Intake & Payment</h1>
         <p className="mt-3 text-neutral-300">
-          Share a few details, then we’ll open payment in a new tab and the scheduler so you can pick a time.
+          Share a few details, then we’ll open the scheduler. After you book, we’ll open payment in a new tab.
         </p>
       </section>
 
@@ -207,7 +220,7 @@ export default function ConsultAnswerPage() {
             </div>
 
             {error && <p className="text-sm text-red-400">{error}</p>}
-            {done && <p className="text-sm text-[#cfb580]">Thanks! We saved your details—finish payment and pick a time.</p>}
+            {done && <p className="text-sm text-[#cfb580]">Thanks! We saved your details—book your time, then complete payment in the new tab.</p>}
 
             <div className="mt-2 flex flex-col gap-3 sm:flex-row">
               <button
@@ -215,24 +228,39 @@ export default function ConsultAnswerPage() {
                 disabled={loading}
                 className="inline-flex items-center justify-center rounded-xl border border-[#cfb580] px-5 py-3 font-semibold tracking-wide text-[#cfb580] transition hover:bg-[#cfb580] hover:text-[#1a191b] disabled:opacity-60"
               >
-                {loading ? "Submitting..." : "Submit & Pay →"}
+                {loading ? "Submitting..." : "Submit & Schedule →"}
               </button>
+              {/* Optional: still offer manual payment link */}
               <a
                 href={QB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-xl border border-neutral-700 px-5 py-3 text-sm text-neutral-300 hover:border-[#cfb580] hover:text-[#cfb580]"
               >
-                Pay without submitting (not recommended)
+                Pay without scheduling (not recommended)
               </a>
             </div>
 
-            <p className="text-xs text-neutral-500">We’ll open payment in a new tab and the scheduling popup here.</p>
-          </form>
-        </div>
+            {showPayFallback && (
+              <div className="mt-3">
+                <a
+                  href={QB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-xl border border-[#cfb580] px-5 py-3 font-semibold tracking-wide text-[#cfb580] hover:bg-[#cfb580] hover:text-[#1a191b]"
+                >
+                  Complete Payment (opens in new tab)
+                </a>
+                <p className="mt-2 text-xs text-neutral-500">
+                  If the payment tab didn’t open automatically after booking, click the button above.
+                </p>
+              </div>
+            )}
 
-        <div className="mt-6 text-xs text-neutral-500">
-          If you haven’t completed payment yet, please do so in the new tab to confirm your slot.
+            <p className="mt-2 text-xs text-neutral-500">
+              We’ll pop open the scheduler now. After you confirm your time, we’ll open the payment tab.
+            </p>
+          </form>
         </div>
       </section>
     </main>
