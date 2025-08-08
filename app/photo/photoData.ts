@@ -1,13 +1,47 @@
-// app/photo/photoData.ts
-
 export type PhotoSpan = 'wide' | 'tall' | 'normal';
 
 export interface PhotoItem {
-    url: string;
-    span: PhotoSpan;
+  url: string;
+  span: PhotoSpan;
+  alt: string; // auto-generated below
 }
 
-export const photoUrls: PhotoItem[] = [
+/* ---------- helper to auto-generate alt (no .at(), ES5-safe) ---------- */
+function generateAlt(url: string): string {
+  try {
+    const parts = decodeURI(url).split('/').filter(Boolean);
+    const file = parts.length ? parts[parts.length - 1] : '';
+    const folder = parts.length >= 2 ? parts[parts.length - 2] : '';
+    const noExt = file.replace(/\.[a-z0-9]+$/i, '');
+
+    // Clean filename
+    const cleaned = noExt
+      .replace(/[_\-]+/g, ' ')
+      .replace(
+        /\b(lhm|light house media|lighthouse|dallas|texas|tx|edit|final|enhanced|export|img|image|photo|ay4i|dy9a|4b6a|b56i|hmb|nr)\b/gi,
+        ''
+      )
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+
+    const titleCase = (s: string) =>
+      s
+        .split(' ')
+        .filter(Boolean)
+        .map(w => (w[0] ? w[0].toUpperCase() + w.slice(1) : ''))
+        .join(' ');
+
+    const base = cleaned ? titleCase(cleaned) : 'Light House Media Photography';
+    const cat = folder ? titleCase(folder.replace(/[-_]/g, ' ')) : '';
+    return cat ? `${cat} — ${base}` : base;
+  } catch {
+    return 'Light House Media Photography';
+  }
+}
+/* --------------------------------------------------------------------- */
+
+
+const rawPhotoUrls: Array<{ url: string; span: PhotoSpan }> = [
     { url: 'https://lhmcollective.b-cdn.net/Jewelry/4B6A2927-Edit.jpg', span: 'wide' }, // (1)
     { url: 'https://lhmcollective.b-cdn.net/Doctors/4B6A4422.jpg', span: 'normal' }, // (2)
     { url: 'https://lhmcollective.b-cdn.net/Clothing/4B6A2101-Edit.jpg', span: 'tall' }, // (3)
@@ -144,31 +178,38 @@ export const photoUrls: PhotoItem[] = [
     { url: 'https://lhmcollective.b-cdn.net/Real%20Estate/4B6A7607.jpg', span: 'tall' }, // 120
     { url: 'https://lhmcollective.b-cdn.net/Jewelry/AY4I4595-2.jpg', span: 'normal' }, // 121
     { url: 'https://lhmcollective.b-cdn.net/Editorial/DY9A4425.jpg', span: 'normal' }, // 122 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ];
+
+
+
+// Final export with generated alts
+export const photoUrls: PhotoItem[] = rawPhotoUrls.map(item => ({
+  ...item,
+  alt: generateAlt(item.url),
+}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
