@@ -11,11 +11,12 @@ import ServicesSection from '@/components/ServicesSection';
 export default function Home() {
   return (
     <>
-     
+
 
       <main className="bg-[#1a191b] text-[#cfb580] font-sans overflow-hidden">
         {/* Hero Section */}
         <section className="relative flex items-center justify-center h-screen w-full text-center">
+          {/* Background video */}
           <video
             autoPlay
             muted
@@ -29,6 +30,10 @@ export default function Home() {
             />
           </video>
 
+          {/* 60% dim overlay */}
+          <div className="absolute inset-0 bg-black/50 z-[1]" aria-hidden="true" />
+
+          {/* Foreground content */}
           <div className="relative z-10 flex flex-col items-center justify-center px-[6vw] w-full box-border">
             <h1 className="text-[#cfb580] font-semibold uppercase tracking-wider text-center text-[clamp(2rem,6vw,3.5rem)] leading-tight mb-6">
               <span className="block sm:inline">YOUR STORY,</span>{' '}
@@ -43,6 +48,8 @@ export default function Home() {
             </a>
           </div>
         </section>
+
+
         <div className="h-24 sm:h-32" />
 
         {/* Chosen By Section */}

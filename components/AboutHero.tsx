@@ -3,6 +3,7 @@
 export default function AboutHero() {
   return (
     <div className="relative w-full h-screen overflow-hidden font-sans bg-[#1a191b] text-[#cfb580]">
+      {/* Background video */}
       <video
         autoPlay
         muted
@@ -16,7 +17,10 @@ export default function AboutHero() {
         />
       </video>
 
-      {/* New flex wrapper */}
+      {/* 60% dim overlay */}
+      <div className="absolute inset-0 bg-black/50 z-[1]" aria-hidden="true" />
+
+      {/* Foreground content */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-[3.15rem] sm:text-[2.7rem] font-bold uppercase tracking-wider leading-[1.1] text-shadow-md max-w-[90%]">
           <span className="block sm:inline">ABOUT US.</span>
