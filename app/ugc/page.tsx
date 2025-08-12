@@ -160,7 +160,7 @@ export default function UGCPage() {
     const v = videoRefs.current[i];
     if (!v) return;
     if (v.paused) {
-      v.play().catch(() => {});
+      v.play().catch(() => { });
     } else {
       v.pause();
     }
@@ -173,8 +173,8 @@ export default function UGCPage() {
       v.currentTime = 0;
       v.play()
         .then(() => v.pause())
-        .catch(() => {});
-    } catch {}
+        .catch(() => { });
+    } catch { }
     // Try to capture a poster
     capturePoster(v, i);
   };
@@ -261,22 +261,20 @@ export default function UGCPage() {
                 )}
 
                 <video
-                  ref={(el) => (videoRefs.current[index] = el)}
+                  ref={(el: HTMLVideoElement | null): void => {
+                    videoRefs.current[index] = el;
+                  }}
                   src={reel.src}
-                  // IMPORTANT: enables drawing frame to canvas for poster capture (CDN must send CORS headers)
-                  crossOrigin="anonymous"
                   playsInline
                   loop
-                  preload="auto"
-                  className="w-full h-full object-cover cursor-pointer relative z-10"
-                  onLoadedMetadata={(e) =>
-                    handleLoaded(index, e.currentTarget)
-                  }
-                  onLoadedData={(e) => handleLoaded(index, e.currentTarget)}
+                  preload="metadata"
+                  className="w-full h-full object-cover cursor-pointer"
                   onClick={() => togglePlay(index)}
                   onPlay={() => handlePlay(index)}
                   onPause={() => handlePause(index)}
+                  crossOrigin="anonymous" // Enables CORS so the first frame can be drawn as a poster
                 />
+
 
                 {/* Overlay appears only when paused */}
                 {!playingStates[index] && (
