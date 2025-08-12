@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 
 const HERO_VIDEO_DESKTOP =
@@ -8,13 +8,22 @@ const HERO_VIDEO_DESKTOP =
 const HERO_VIDEO_MOBILE =
   'https://lhmcollective.b-cdn.net/UGC-Content/Vertical%20UGC%20BG.mp4'; // 9:16
 
-const reels = [
+type Reel = {
+  src: string;
+  name: string;
+  handle: string;
+  followers: string;
+  views: string;
+  link: string;
+};
+
+const reels: Reel[] = [
   {
     src: 'https://lhmcollective.b-cdn.net/UGC-Content/AthenaUGC-video.MP4',
     name: 'Athena Paris',
     handle: '@athenaparissss',
     followers: '865k',
-    views: '4.6M',
+    views: '2.6M',
     link: 'https://www.instagram.com/reel/DLhTc7uuXCi/',
   },
   {
@@ -23,7 +32,7 @@ const reels = [
     handle: '@reignbodyfuel',
     followers: '335k',
     views: '8.2M',
-    link: 'https://www.instagram.com/reel/C9fVJq5vyLx/?igsh=MTdtOTlxYm8yZDYzMw==',
+    link: 'https://www.instagram.com/reignbodyfuel/',
   },
   {
     src: 'https://lhmcollective.b-cdn.net/UGC-Content/Recess%20My%20Gym%20is%20just%20Different.mp4',
@@ -31,7 +40,7 @@ const reels = [
     handle: '@Recessdallas',
     followers: '29.2k',
     views: '14.4M',
-    link: 'https://www.instagram.com/reel/DFF92xvxpac/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+    link: 'https://www.instagram.com/RecessDallas/',
   },
   {
     src: 'https://lhmcollective.b-cdn.net/UGC-Content/VIrginia-ugc-video-light-house-media-dallas-videographer.MP4',
@@ -104,15 +113,37 @@ export default function UGCPage() {
   const [playingStates, setPlayingStates] = useState<boolean[]>(
     Array(reels.length).fill(false)
   );
+  const [posters, setPosters] = useState<string[]>(
+    Array(reels.length).fill('')
+  );
 
-  // Pause others when one starts playing
+  // Capture the first frame into a dataURL and set as poster
+  const capturePoster = useCallback((v: HTMLVideoElement, index: number) => {
+    try {
+      if (!v.videoWidth || !v.videoHeight) return;
+      const canvas = document.createElement('canvas');
+      canvas.width = v.videoWidth;
+      canvas.height = v.videoHeight;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+      setPosters((prev) => {
+        if (prev[index]) return prev;
+        const next = [...prev];
+        next[index] = dataUrl;
+        return next;
+      });
+    } catch {
+      // If CORS blocks drawing or anything else fails, we just skip.
+    }
+  }, []);
+
+  // Only one playing at a time
   const handlePlay = (i: number) => {
-    setPlayingStates((prev) => {
-      const next = prev.map((_, idx) => idx === i);
-      return next;
-    });
-    videoRefs.current.forEach((v, idx) => {
-      if (idx !== i && v && !v.paused) v.pause();
+    setPlayingStates((prev) => prev.map((_, idx) => idx === i));
+    videoRefs.current.forEach((vid, idx) => {
+      if (idx !== i && vid && !vid.paused) vid.pause();
     });
   };
 
@@ -129,12 +160,23 @@ export default function UGCPage() {
     const v = videoRefs.current[i];
     if (!v) return;
     if (v.paused) {
-      v.play().catch(() => {
-        // Autoplay restriction or user gesture issues; nothing to do here.
-      });
+      v.play().catch(() => {});
     } else {
       v.pause();
     }
+  };
+
+  // Called when metadata or first data frame is available
+  const handleLoaded = (i: number, v: HTMLVideoElement) => {
+    // Seek to 0 and briefly play/pause to force frame availability (Safari)
+    try {
+      v.currentTime = 0;
+      v.play()
+        .then(() => v.pause())
+        .catch(() => {});
+    } catch {}
+    // Try to capture a poster
+    capturePoster(v, i);
   };
 
   return (
@@ -150,10 +192,16 @@ export default function UGCPage() {
           preload="auto"
           aria-hidden="true"
         >
-          {/* Desktop / wider aspect ratios */}
-          <source src={HERO_VIDEO_DESKTOP} media="(min-aspect-ratio: 4/3)" type="video/mp4" />
-          {/* Mobile / tall aspect ratios */}
-          <source src={HERO_VIDEO_MOBILE} media="(max-aspect-ratio: 4/3)" type="video/mp4" />
+          <source
+            src={HERO_VIDEO_DESKTOP}
+            media="(min-aspect-ratio: 4/3)"
+            type="video/mp4"
+          />
+          <source
+            src={HERO_VIDEO_MOBILE}
+            media="(max-aspect-ratio: 4/3)"
+            type="video/mp4"
+          />
         </video>
 
         {/* 60% dim overlay */}
@@ -192,28 +240,39 @@ export default function UGCPage() {
             >
               {/* Top Info */}
               <div className="mb-3 text-center">
-                <p className="text-3xl sm:text-4xl md:text-5xl font-semibold">{reel.name}</p>
+                <p className="text-3xl sm:text-4xl md:text-5xl font-semibold">
+                  {reel.name}
+                </p>
                 <p className="text-lg sm:text-xl md:text-2xl text-[#cfb580]/80">
                   {reel.handle} • {reel.followers} followers
                 </p>
               </div>
 
               {/* Video Container */}
-              <div className="relative w-full aspect-[9/16] rounded-3xl overflow-hidden border border-[#cfb580]/30 shadow-lg group">
+              <div className="relative w-full aspect-[9/16] rounded-3xl overflow-hidden border border-[#cfb580]/30 shadow-lg group bg-[#0f0f10]">
+                {/* If we have an auto-captured poster, use it to avoid black frame */}
+                {posters[index] && (
+                  <img
+                    src={posters[index]}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover"
+                    aria-hidden="true"
+                  />
+                )}
+
                 <video
                   ref={(el) => (videoRefs.current[index] = el)}
                   src={reel.src}
+                  // IMPORTANT: enables drawing frame to canvas for poster capture (CDN must send CORS headers)
+                  crossOrigin="anonymous"
                   playsInline
                   loop
                   preload="auto"
-                  className="w-full h-full object-cover cursor-pointer"
-                  onLoadedData={(e) => {
-                    const v = e.currentTarget;
-                    v.currentTime = 0;
-                    v.play().then(() => {
-                      v.pause(); // forces the first frame to display
-                    }).catch(() => { });
-                  }}
+                  className="w-full h-full object-cover cursor-pointer relative z-10"
+                  onLoadedMetadata={(e) =>
+                    handleLoaded(index, e.currentTarget)
+                  }
+                  onLoadedData={(e) => handleLoaded(index, e.currentTarget)}
                   onClick={() => togglePlay(index)}
                   onPlay={() => handlePlay(index)}
                   onPause={() => handlePause(index)}
@@ -224,7 +283,7 @@ export default function UGCPage() {
                   <button
                     type="button"
                     aria-label={`Play ${reel.name} video`}
-                    className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/30 to-transparent"
+                    className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/30 to-transparent z-20"
                     onClick={() => togglePlay(index)}
                   >
                     <div className="w-16 h-16 bg-[#cfb580] text-[#1a191b] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
@@ -239,11 +298,12 @@ export default function UGCPage() {
                     </div>
                   </button>
                 )}
+
                 <a
                   href={reel.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-2 right-3 text-xs bg-black/60 text-white px-2 py-1 rounded-full hover:bg-[#cfb580] hover:text-black transition"
+                  className="absolute bottom-2 right-3 text-xs bg-black/60 text-white px-2 py-1 rounded-full hover:bg-[#cfb580] hover:text-black transition z-20"
                 >
                   View on IG
                 </a>
