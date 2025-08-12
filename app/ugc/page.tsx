@@ -4,9 +4,9 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const HERO_VIDEO_DESKTOP =
-  'https://lhmcollective.b-cdn.net/UGC-Content/UGC%20BG_1-dallas-social-media-videographer-lighthousemedia-instagram-tiktok.mp4'; // 16:9 (e.g., 1920x1080 or 3840x2160)
+  'https://lhmcollective.b-cdn.net/UGC-Content/UGC%20BG_1-dallas-social-media-videographer-lighthousemedia-instagram-tiktok.mp4'; // 16:9
 const HERO_VIDEO_MOBILE =
-  'https://lhmcollective.b-cdn.net/UGC-Content/Vertical%20UGC%20BG.mp4'; // <-- replace with your vertical export (9:16), e.g., 1080x1920
+  'https://lhmcollective.b-cdn.net/UGC-Content/Vertical%20UGC%20BG.mp4'; // 9:16
 
 const reels = [
   {
@@ -14,8 +14,7 @@ const reels = [
     name: 'Athena Paris',
     handle: '@athenaparissss',
     followers: '865k',
-    caption: '“Increased my sales by 350% for that month alone!”',
-    views: '2.6M',
+    views: '4.6M',
     link: 'https://www.instagram.com/reel/DLhTc7uuXCi/',
   },
   {
@@ -23,26 +22,22 @@ const reels = [
     name: 'REIGN Body Fuel',
     handle: '@reignbodyfuel',
     followers: '335k',
-    caption: '“Never Seen This Many Views Ever On Our Page.”',
     views: '8.2M',
-    link: 'https://www.instagram.com/reignbodyfuel/',
+    link: 'https://www.instagram.com/reel/C9fVJq5vyLx/?igsh=MTdtOTlxYm8yZDYzMw==',
   },
   {
     src: 'https://lhmcollective.b-cdn.net/UGC-Content/Recess%20My%20Gym%20is%20just%20Different.mp4',
-    name: 'Recess Fitness Club',
+    name: 'Recess Fitness',
     handle: '@Recessdallas',
     followers: '29.2k',
-    caption: '“These results speak for themselves.”',
     views: '14.4M',
-    link: 'https://www.instagram.com/RecessDallas/',
+    link: 'https://www.instagram.com/reel/DFF92xvxpac/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
   },
-  // New UGC entries...
   {
     src: 'https://lhmcollective.b-cdn.net/UGC-Content/VIrginia-ugc-video-light-house-media-dallas-videographer.MP4',
     name: 'Virginia SanHouse',
     handle: '@virginiasanhouse',
     followers: '2.4M',
-    caption: 'Great Results',
     views: '996k',
     link: 'https://www.instagram.com/reel/C9u4p2ORrRk/?igsh=MXc3aWsydjhna3ZwbA==',
   },
@@ -51,7 +46,6 @@ const reels = [
     name: 'The Hopeaholics',
     handle: '@thehopeaholics',
     followers: '326k',
-    caption: 'Great Results',
     views: '680k',
     link: 'https://www.instagram.com/reel/CzHj1M7ypQX/?igsh=ZXVzMTdsaTF3NWw3',
   },
@@ -60,16 +54,14 @@ const reels = [
     name: 'Natalie Eva Marie',
     handle: '@natalieevamarie',
     followers: '6M',
-    caption: 'Great Results',
     views: '5.8M',
     link: 'https://www.instagram.com/reel/Cry7APhgbHZ/?igsh=ZGluc2Y1ZTRweTM3',
   },
   {
     src: 'https://lhmcollective.b-cdn.net/UGC-Content/jakepaul-miketyson-mvp-dallas-event-ugc-light-house-media-videographer.mp4',
-    name: 'Raphamilagres',
+    name: 'Raphami lagres',
     handle: '@raphamilagres',
     followers: '184k',
-    caption: 'Great Results',
     views: '453k',
     link: 'https://www.instagram.com/reel/DCc81bWS3JZ/?igsh=MTNuYjI2M2xteWk3bA==',
   },
@@ -78,7 +70,6 @@ const reels = [
     name: 'Thor Bjornson',
     handle: '@hafthorbjornsson',
     followers: '1.5M',
-    caption: 'Great Results',
     views: '996k',
     link: 'https://www.tiktok.com/t/ZPHsyc12njn3D-uDYcR/',
   },
@@ -87,7 +78,6 @@ const reels = [
     name: 'Kai Greene',
     handle: '@Kaigreene',
     followers: '7.1M',
-    caption: 'Great Results',
     views: '1.1M',
     link: 'https://www.instagram.com/reel/CzOdSZ3OGQM/?igsh=cnZzeWxwYTNqdGdh',
   },
@@ -96,7 +86,6 @@ const reels = [
     name: 'REIGN UK',
     handle: '@reignbodyfueleurope',
     followers: '25.5k',
-    caption: 'Great Results',
     views: '805k',
     link: 'https://www.instagram.com/reel/CnKEcnJpYfn/?igsh=MXhzcHQ1MXRzYWp3bg==',
   },
@@ -105,7 +94,6 @@ const reels = [
     name: 'Arnold Sports',
     handle: '@arnoldsports',
     followers: '1.8M',
-    caption: 'Great Results',
     views: '122k',
     link: 'https://www.instagram.com/reel/C4BI7ZLOiUJ/?igsh=MWl1dnF2OTk3MHEzcA==',
   },
@@ -117,23 +105,41 @@ export default function UGCPage() {
     Array(reels.length).fill(false)
   );
 
-  const togglePlay = (index: number) => {
-    const video = videoRefs.current[index];
-    if (!video) return;
-    if (video.paused) {
-      void video.play();
+  // Pause others when one starts playing
+  const handlePlay = (i: number) => {
+    setPlayingStates((prev) => {
+      const next = prev.map((_, idx) => idx === i);
+      return next;
+    });
+    videoRefs.current.forEach((v, idx) => {
+      if (idx !== i && v && !v.paused) v.pause();
+    });
+  };
+
+  const handlePause = (i: number) => {
+    setPlayingStates((prev) => {
+      if (!prev[i]) return prev;
+      const next = [...prev];
+      next[i] = false;
+      return next;
+    });
+  };
+
+  const togglePlay = (i: number) => {
+    const v = videoRefs.current[i];
+    if (!v) return;
+    if (v.paused) {
+      v.play().catch(() => {
+        // Autoplay restriction or user gesture issues; nothing to do here.
+      });
     } else {
-      video.pause();
+      v.pause();
     }
-    const updated = [...playingStates];
-    updated[index] = !video.paused;
-    setPlayingStates(updated);
   };
 
   return (
     <main className="bg-[#1a191b] text-[#cfb580] font-league">
       {/* Hero with responsive background video (mobile + desktop) */}
-      {/* Taller feel on phones, true 16:9 on md+ */}
       <section className="relative w-full aspect-[9/16] md:aspect-video flex items-center justify-center overflow-hidden">
         <video
           className="pointer-events-none absolute inset-0 w-full h-full object-cover"
@@ -176,8 +182,8 @@ export default function UGCPage() {
         </div>
       </section>
 
-      {/* Grid */}
-      <section className="py-0 px-4 md:px-16">
+      {/* Grid (extra spacing after hero) */}
+      <section className="pt-16 md:pt-24 px-4 md:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 place-items-center">
           {reels.map((reel, index) => (
             <div
@@ -190,9 +196,6 @@ export default function UGCPage() {
                 <p className="text-lg sm:text-xl md:text-2xl text-[#cfb580]/80">
                   {reel.handle} • {reel.followers} followers
                 </p>
-                <p className="text-lg sm:text-xl md:text-2xl text-[#cfb580]/70 mt-1">
-                  {reel.views} views
-                </p>
               </div>
 
               {/* Video Container */}
@@ -204,15 +207,18 @@ export default function UGCPage() {
                   src={reel.src}
                   playsInline
                   loop
-                  controls
+                  preload="metadata"
                   className="w-full h-full object-cover cursor-pointer"
                   onClick={() => togglePlay(index)}
+                  onPlay={() => handlePlay(index)}
+                  onPause={() => handlePause(index)}
                 />
+                {/* Overlay appears only when paused */}
                 {!playingStates[index] && (
                   <button
                     type="button"
                     aria-label={`Play ${reel.name} video`}
-                    className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/30 to-transparent cursor-pointer"
+                    className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/30 to-transparent"
                     onClick={() => togglePlay(index)}
                   >
                     <div className="w-16 h-16 bg-[#cfb580] text-[#1a191b] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
@@ -237,9 +243,9 @@ export default function UGCPage() {
                 </a>
               </div>
 
-              {/* Caption */}
+              {/* Views under video (no captions anywhere) */}
               <p className="text-lg sm:text-xl md:text-2xl text-[#cfb580]/70 italic text-center mt-2 max-w-[90%]">
-                {reel.caption}
+                {reel.views} views
               </p>
             </div>
           ))}
