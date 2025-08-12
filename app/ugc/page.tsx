@@ -201,18 +201,24 @@ export default function UGCPage() {
               {/* Video Container */}
               <div className="relative w-full aspect-[9/16] rounded-3xl overflow-hidden border border-[#cfb580]/30 shadow-lg group">
                 <video
-                  ref={(el) => {
-                    videoRefs.current[index] = el;
-                  }}
+                  ref={(el) => (videoRefs.current[index] = el)}
                   src={reel.src}
                   playsInline
                   loop
-                  preload="metadata"
+                  preload="auto"
                   className="w-full h-full object-cover cursor-pointer"
+                  onLoadedData={(e) => {
+                    const v = e.currentTarget;
+                    v.currentTime = 0;
+                    v.play().then(() => {
+                      v.pause(); // forces the first frame to display
+                    }).catch(() => { });
+                  }}
                   onClick={() => togglePlay(index)}
                   onPlay={() => handlePlay(index)}
                   onPause={() => handlePause(index)}
                 />
+
                 {/* Overlay appears only when paused */}
                 {!playingStates[index] && (
                   <button
