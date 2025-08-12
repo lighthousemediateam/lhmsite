@@ -237,16 +237,16 @@ export default function UGCPage() {
       {/* CTA */}
       <section className="py-20 text-center px-6">
         <h3 className="text-3xl md:text-4xl font-bold mb-4">
-          Schedule Your Consult Today!
+          Schedule Your Consult Today
         </h3>
         <p className="text-[#cfb580]/80 max-w-md mx-auto mb-6">
-          Ready To Take Your Brand To The Next Level? Click Below Now
+          Ready To Take Your Brand To The Next Level?
         </p>
         <a
           href="/consult"
           className="inline-block px-8 py-3 border border-[#cfb580] rounded-full text-[#cfb580] hover:bg-[#cfb580] hover:text-[#1a191b] transition"
         >
-          Get In Touch
+          Connect Now
         </a>
       </section>
     </main>
