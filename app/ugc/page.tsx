@@ -3,8 +3,10 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const HERO_VIDEO =
-  'https://lhmcollective.b-cdn.net/UGC-Content/ugc-hero-montage.mp4'; // replace with your Bunny link
+const HERO_VIDEO_DESKTOP =
+  'https://lhmcollective.b-cdn.net/UGC-Content/UGC%20BG_1-dallas-social-media-videographer-lighthousemedia-instagram-tiktok.mp4'; // 16:9 (e.g., 1920x1080 or 3840x2160)
+const HERO_VIDEO_MOBILE =
+  'https://lhmcollective.b-cdn.net/UGC-Content/Vertical%20UGC%20BG.mp4'; // <-- replace with your vertical export (9:16), e.g., 1080x1920
 
 const reels = [
   {
@@ -119,7 +121,7 @@ export default function UGCPage() {
     const video = videoRefs.current[index];
     if (!video) return;
     if (video.paused) {
-      video.play();
+      void video.play();
     } else {
       video.pause();
     }
@@ -130,25 +132,31 @@ export default function UGCPage() {
 
   return (
     <main className="bg-[#1a191b] text-[#cfb580] font-league">
-      {/* Hero with background video */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-        {/* Background video */}
+      {/* Hero with responsive background video (mobile + desktop) */}
+      {/* Taller feel on phones, true 16:9 on md+ */}
+      <section className="relative w-full aspect-[9/16] md:aspect-video flex items-center justify-center overflow-hidden">
         <video
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-          src={HERO_VIDEO}
+          className="pointer-events-none absolute inset-0 w-full h-full object-cover"
           playsInline
           muted
           loop
           autoPlay
           preload="auto"
           aria-hidden="true"
-        />
+        >
+          {/* Desktop / wider aspect ratios */}
+          <source src={HERO_VIDEO_DESKTOP} media="(min-aspect-ratio: 4/3)" type="video/mp4" />
+          {/* Mobile / tall aspect ratios */}
+          <source src={HERO_VIDEO_MOBILE} media="(max-aspect-ratio: 4/3)" type="video/mp4" />
+        </video>
+
         {/* 60% dim overlay */}
         <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
+
         {/* Foreground text */}
-        <div className="relative z-10">
+        <div className="relative z-10 text-center px-6">
           <motion.h1
-            className="text-7xl md:text-8xl font-bold mb-4 text-[#cfb580]"
+            className="text-5xl sm:text-6xl md:text-8xl font-bold mb-4 text-[#cfb580]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -156,7 +164,7 @@ export default function UGCPage() {
             Performance UGC That Converts
           </motion.h1>
           <motion.p
-            className="text-3xl max-w-4xl mx-auto text-[#cfb580]/80"
+            className="text-xl sm:text-2xl md:text-3xl max-w-4xl mx-auto text-[#cfb580]/80"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -178,11 +186,13 @@ export default function UGCPage() {
             >
               {/* Top Info */}
               <div className="mb-3 text-center">
-                <p className="text-5xl font-semibold">{reel.name}</p>
-                <p className="text-2xl text-[#cfb580]/80">
+                <p className="text-3xl sm:text-4xl md:text-5xl font-semibold">{reel.name}</p>
+                <p className="text-lg sm:text-xl md:text-2xl text-[#cfb580]/80">
                   {reel.handle} • {reel.followers} followers
                 </p>
-                <p className="text-2xl text-[#cfb580]/70 mt-1">{reel.views} views</p>
+                <p className="text-lg sm:text-xl md:text-2xl text-[#cfb580]/70 mt-1">
+                  {reel.views} views
+                </p>
               </div>
 
               {/* Video Container */}
@@ -199,7 +209,9 @@ export default function UGCPage() {
                   onClick={() => togglePlay(index)}
                 />
                 {!playingStates[index] && (
-                  <div
+                  <button
+                    type="button"
+                    aria-label={`Play ${reel.name} video`}
                     className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/30 to-transparent cursor-pointer"
                     onClick={() => togglePlay(index)}
                   >
@@ -213,7 +225,7 @@ export default function UGCPage() {
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
-                  </div>
+                  </button>
                 )}
                 <a
                   href={reel.link}
@@ -226,7 +238,7 @@ export default function UGCPage() {
               </div>
 
               {/* Caption */}
-              <p className="text-2xl text-[#cfb580]/70 italic text-center mt-2 max-w-[90%]">
+              <p className="text-lg sm:text-xl md:text-2xl text-[#cfb580]/70 italic text-center mt-2 max-w-[90%]">
                 {reel.caption}
               </p>
             </div>
