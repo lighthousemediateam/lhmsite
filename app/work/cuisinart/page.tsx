@@ -47,22 +47,22 @@ export default function CuisinartPage() {
 
                 <div className="grid grid-cols-2 gap-0">
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+1"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Cuisinart/Cuisinart-4-lighthouse-media-dallas-based-videographer.png"
                         alt="Placeholder Frame 1"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+2"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Cuisinart/Cuisinart-3-light-house-media-dallas-videographer.png"
                         alt="Placeholder Frame 2"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+3"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Cuisinart/Cuisinart-replacement-lighthousemedia-dallas-videographer-photographer.png"
                         alt="Placeholder Frame 3"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+4"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Cuisinart/Cuisinart-1-lighthousemedia-dallas-videographer.png"
                         alt="Placeholder Frame 4"
                         className="w-full h-full object-cover"
                     />

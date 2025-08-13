@@ -47,22 +47,22 @@ export default function BlackhawkPage() {
 
                 <div className="grid grid-cols-2 gap-0">
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+1"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Blackhawk/BlackHawk-1-Lighthousemedia-dallas-videogrpaher%20.png"
                         alt="Placeholder Frame 1"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+2"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Blackhawk/BlackHawk-3-Light-House-Media-Dallas-Videographer.png"
                         alt="Placeholder Frame 2"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+3"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Blackhawk/BlackHawk-2-Light-House-Media-Dallas-Videographer.png"
                         alt="Placeholder Frame 3"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+4"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Blackhawk/Blackhawk-2planes-light-house-media-dallas-videographer.png"
                         alt="Placeholder Frame 4"
                         className="w-full h-full object-cover"
                     />
