@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Dallas Videographer | Light House Media",
-  description: "Professional videography in Dallas for brands, events, and real estate.",
+  description: "Creative media agency crafting cinematic visuals and strategic storytelling to elevate your brand and connect with your audience.",
 };
 
 import Link from 'next/link';
