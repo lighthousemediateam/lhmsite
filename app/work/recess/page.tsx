@@ -14,7 +14,7 @@ export default function RecessPage() {
                     playsInline
                     loop
                     preload="auto"
-                    poster="https://via.placeholder.com/1280x720?text=RECESS+Poster"
+                    poster="https://lhmcollective.b-cdn.net/Work%20Photos/Recess/Recess-1-dallas-gym-photography-videography-lighthousemedia-local-gym-fitness-near-me.jpg"
                 >
                     <source
                         src="https://lhmcollective.b-cdn.net/Class%20at%20Recess%20Website.mp4"
@@ -24,7 +24,6 @@ export default function RecessPage() {
                 </video>
             </div>
 
-            {/* Video Description */}
             {/* SEO Body Text */}
             <div className="max-w-[900px] mx-auto mt-16 px-6 text-[1.195rem] leading-relaxed text-[#cfb580]/90">
                 <h2 className="text-4xl font-semibold uppercase tracking-wide mb-4">
@@ -47,36 +46,53 @@ export default function RecessPage() {
                 </p>
             </div>
 
-
             {/* Frames Section */}
             <div className="w-full px-0 py-12">
                 <h2 className="text-sm uppercase tracking-wide mb-5 border-t border-[#cfb580] pt-2 inline-block ml-6">
                     Photography
                 </h2>
 
-                <div className="grid grid-cols-2 gap-0">
+                <div className="grid grid-cols-3 gap-2 px-6">
+                    {/* Row 1: Horizontal + Vertical */}
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+1"
-                        alt="Recess Fitness class photo 1"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Recess/Recess-1-dallas-gym-photography-videography-lighthousemedia-local-gym-fitness-near-me.jpg"
+                        alt="Recess Fitness horizontal photo 1"
+                        className="w-full h-full object-cover col-span-2"
+                    />
+                    <img
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Recess/Recess-2-dallas-gym-photography-videography-lighthousemedia-local-gym-fitness-near-me.jpg"
+                        alt="Recess Fitness vertical photo 2"
+                        className="w-full h-full object-cover"
+                    />
+
+                    {/* Row 2: Vertical + Horizontal */}
+                    <img
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Recess/Recess-5-dallas-gym-photography-videography-lighthousemedia-local-gym-fitness-near-me.jpg"
+                        alt="Recess Fitness vertical photo 5"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+2"
-                        alt="Recess Fitness class photo 2"
-                        className="w-full h-full object-cover"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Recess/Recess-3-dallas-gym-photography-videography-lighthousemedia-local-gym-fitness-near-me.jpg"
+                        alt="Recess Fitness horizontal photo 3"
+                        className="w-full h-full object-cover col-span-2"
                     />
+
+                    {/* Row 3: Horizontal + Vertical */}
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+3"
-                        alt="Recess Fitness class photo 3"
-                        className="w-full h-full object-cover"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Recess/Recess-4-dallas-gym-photography-videography-lighthousemedia-local-gym-fitness-near-me.jpg"
+                        alt="Recess Fitness horizontal photo 4"
+                        className="w-full h-full object-cover col-span-2"
                     />
+                    {/* reusing vertical 2 or 5 here to balance, or can leave blank */}
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+4"
-                        alt="Recess Fitness class photo 4"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Recess/Recess-6-dallas-gym-photography-videography-lighthousemedia-local-gym-fitness-near-me.jpg"
+                        alt="Recess Fitness vertical photo repeat to balance grid"
                         className="w-full h-full object-cover"
                     />
                 </div>
             </div>
+
+
         </div>
     );
 }

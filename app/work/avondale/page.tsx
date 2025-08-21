@@ -45,29 +45,42 @@ export default function AvondalePage() {
           Photography
         </h2>
 
-        <div className="grid grid-cols-2 gap-0">
+        <div className="grid grid-cols-3 gap-2 px-6">
           <img
-            src="https://via.placeholder.com/800x600?text=Frame+1"
-            alt="Luxury vehicle detail photo by Light House Media"
+            src="https://lhmcollective.b-cdn.net/Work%20Photos/Avondale/AY4I0835.jpg"
+            alt="Luxury vehicle vertical photo for Avondale"
             className="w-full h-full object-cover"
           />
           <img
-            src="https://via.placeholder.com/800x600?text=Frame+2"
-            alt="Branded car lifestyle shoot for Avondale Dealerships"
+            src="https://lhmcollective.b-cdn.net/Work%20Photos/Avondale/AY4I0293.jpg"
+            alt="Luxury car showcase photography for Avondale"
             className="w-full h-full object-cover"
           />
           <img
-            src="https://via.placeholder.com/800x600?text=Frame+3"
-            alt="McLaren feature highlight photography by Light House Media"
+            src="https://lhmcollective.b-cdn.net/Work%20Photos/Avondale/AY4I0804.jpg"
+            alt="McLaren detail photo by Light House Media"
             className="w-full h-full object-cover"
           />
           <img
-            src="https://via.placeholder.com/800x600?text=Frame+4"
-            alt="Premium dealership content for Avondale's luxury fleet"
+            src="https://lhmcollective.b-cdn.net/Work%20Photos/Avondale/AY4I0032-Edit.jpg"
+            alt="Avondale lifestyle dealership photo"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="https://lhmcollective.b-cdn.net/Work%20Photos/Avondale/AY4I0871.jpg"
+            alt="Rolls Royce luxury shoot for Avondale"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="https://lhmcollective.b-cdn.net/Work%20Photos/Avondale/AY4I9864.jpg"
+            alt="Porsche dealership photography by Light House Media"
             className="w-full h-full object-cover"
           />
         </div>
       </div>
+
+
+
     </div>
   );
 }
