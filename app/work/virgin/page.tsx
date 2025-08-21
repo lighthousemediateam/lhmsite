@@ -47,22 +47,22 @@ export default function VirginPage() {
 
                 <div className="grid grid-cols-2 gap-0">
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+1"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Virgin-Hotel/Virgin-Hotel-1-Dallas-Photography-videography-local-Texas-Entertainment-Filmaker-Drone-Videogrpaher.png"
                         alt="Virgin Hotels lifestyle photo 1"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+2"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Virgin-Hotel/Virgin-Hotel-2-Dallas-Photography-videography-local-Texas-Entertainment-Filmaker-Drone-Videogrpaher.png"
                         alt="Virgin Hotels lifestyle photo 2"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+3"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Virgin-Hotel/Virgin-Hotel-3-Dallas-Photography-videography-local-Texas-Entertainment-Filmaker-Drone-Videogrpaher.png"
                         alt="Virgin Hotels lifestyle photo 3"
                         className="w-full h-full object-cover"
                     />
                     <img
-                        src="https://via.placeholder.com/800x600?text=Frame+4"
+                        src="https://lhmcollective.b-cdn.net/Work%20Photos/Virgin-Hotel/Virgin-Hotel-5-Dallas-Photography-videography-local-Texas-Entertainment-Filmaker-Drone-Videogrpaher.png"
                         alt="Virgin Hotels lifestyle photo 4"
                         className="w-full h-full object-cover"
                     />
