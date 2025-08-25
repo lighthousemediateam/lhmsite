@@ -7,13 +7,13 @@ const team = [
         name: 'Adam Haisler',
         role: 'Business Operations Manager',
         image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Adam%20Site%20Edit.jpg',
-        bio: 'Adam runs the backend of the business and manages the administrative area',
+        bio: 'Adam runs the backend of the business and manages the administrative area and he gets the hoes',
     },
     {
         name: 'Jon Ly',
         role: 'CEO/Founder',
         image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Jon%20Site%20Edit.jpg',
-        bio: 'When Jon Ly isnt running Light House Media, he is out patroling the streets of Metropolis, guarding our sacred city from the evil that corrupts it. Its a lonely road but somewhat has to do it- Jon Ly',
+        bio: 'Jon leads Light House Media with a commitment to meaningful storytelling and visual excellence.',
     },
     {
         name: 'Johnathan Nguyen',
