@@ -11,13 +11,13 @@ const team = [
     },
     {
         name: 'Jon Ly',
-        role: 'CEO/Founder & Videographer',
+        role: 'CEO/Founder',
         image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Jon%20Site%20Edit.jpg',
         bio: 'When Jon Ly isnt running Light House Media, he is out patroling the streets of Metropolis, guarding our sacred city from the evil that corrupts it. Its a lonely road but somewhat has to do it- Jon Ly',
     },
     {
         name: 'Johnathan Nguyen',
-        role: 'Videographer',
+        role: 'Director of Photograhy',
         image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Johnathan%20Site%20Edit.jpg',
         bio: 'Johnathan bridges creative vision and logistics, making stories come to life on screen.',
     },
