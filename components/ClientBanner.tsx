@@ -7,37 +7,37 @@ const bannerItems = [
   {
     href: '/reign-page',
     videoSrc: 'https://lhmcollective.b-cdn.net/REIGN%20FULL%2060s%20FINAL.mp4',
-    logoSrc: 'https://www.lhmcollective.com/s/REIGN_Grayscale_Branding_2019_Positive_Horizontal.png',
+    logoSrc: 'https://lhmcollective.b-cdn.net/Logos/REIGN_White_Text_Transparent.png',
     alt: 'REIGN Logo',
   },
   {
     href: '/reign-storm-page',
     videoSrc: 'https://lhmcollective.b-cdn.net/STORM%20FULL%20QUALITY.mp4',
-    logoSrc: 'https://www.lhmcollective.com/s/reign_storm_logo_final_cleaned_v3.png',
+    logoSrc: 'https://lhmcollective.b-cdn.net/Logos/reign_storm_logo_final_cleaned_v3.png',
     alt: 'STORM Logo',
   },
   {
     href: '/recess-page',
     videoSrc: 'https://lhmcollective.b-cdn.net/RECESS%20-%20main%20client%20video.mp4',
-    logoSrc: 'https://www.lhmcollective.com/s/RecessLogo_RVersion_NoBox_White_300dpi_F-xftj.png',
+    logoSrc: 'https://lhmcollective.b-cdn.net/Logos/RecessLogo_RVersion_NoBox_White_300dpi_F.png',
     alt: 'Recess Logo',
   },
   {
     href: '/company-4',
     videoSrc: 'https://lhmcollective.b-cdn.net/Spyder%20Preview.mp4',
-    logoSrc: 'https://www.lhmcollective.com/s/avondale-logo.png',
+    logoSrc: 'https://lhmcollective.b-cdn.net/Logos/avondale%20logo.png',
     alt: 'Avondale Logo',
   },
   {
     href: '/company-5',
     videoSrc: 'https://lhmcollective.b-cdn.net/ITDRC%20Preview.mp4',
-    logoSrc: 'https://www.lhmcollective.com/s/itdrc_logo_white.png',
+    logoSrc: 'https://lhmcollective.b-cdn.net/Logos/itdrc_logo_white.png',
     alt: 'ITDRC Logo',
   },
   {
     href: '/company-6',
     videoSrc: 'https://lhmcollective.b-cdn.net/Virgin%20Preview%202.mp4',
-    logoSrc: 'https://www.lhmcollective.com/s/virgin-hotel-logo.png',
+    logoSrc: 'https://lhmcollective.b-cdn.net/Logos/virgin%20hotel%20logo.png',
     alt: 'Virgin Hotels Logo',
   },
 ];
