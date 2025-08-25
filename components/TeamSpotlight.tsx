@@ -6,19 +6,19 @@ const team = [
     {
         name: 'Adam Haisler',
         role: 'Business Operations & Admin Manager',
-        image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/IMG_0998.jpeg',
+        image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Adam%20Site%20Edit.jpg',
         bio: 'Adam runs the backend of the business and manages the administrative area',
     },
     {
         name: 'Jon Ly',
         role: 'CEO/Founder & Videographer',
-        image: 'https://lhmcollective.b-cdn.net/6B7298FD-13F1-4075-BFA5-B1533FB4DD3C.PNG',
+        image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Jon%20Site%20Edit.jpg',
         bio: 'When Jon Ly isnt running Light House Media, he is out patroling the streets of Metropolis, guarding our sacred city from the evil that corrupts it. Its a lonely road but somewhat has to do it- Jon Ly',
     },
     {
         name: 'Johnathan Nguyen',
         role: 'Videographer',
-        image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/IMG_0995.jpeg',
+        image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Johnathan%20Site%20Edit.jpg',
         bio: 'Johnathan bridges creative vision and logistics, making stories come to life on screen.',
     },
 ];
@@ -52,11 +52,14 @@ export default function TeamSpotlight() {
                   flex-1
                 `}
                             >
-                                <img
-                                    src={member.image}
-                                    alt={member.name}
-                                    className="w-full h-72 object-cover rounded-lg border-2 border-[#cfb580] mb-4"
-                                />
+                                <div className="w-full aspect-[3/4]">   {/* 3:4 portrait ratio, adjust as needed */}
+                                    <img
+                                        src={member.image}
+                                        alt={member.name}
+                                        className="w-full h-full object-cover rounded-lg border-2 border-[#cfb580]"
+                                    />
+                                </div>
+
                                 <h3 className="text-xl font-bold uppercase">{member.name}</h3>
                                 <p className="text-white text-sm">{member.role}</p>
                             </div>
