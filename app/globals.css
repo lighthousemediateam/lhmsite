@@ -1,81 +1,82 @@
 /* Import Tailwind first */
 @import 'tailwindcss';
 
-/* Self-Hosted League Spartan */
+/* Self‑hosted League Spartan — force web file, block OS-local variants */
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-Thin.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-Thin.woff2') format('woff2');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-ExtraLight.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-ExtraLight.woff2') format('woff2');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-Light.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-Regular.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-Medium.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-SemiBold.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-Bold.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-ExtraBold.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'League Spartan';
-  src: url('/fonts/league-spartan/LeagueSpartan-Black.woff2') format('woff2');
+  src: local(''), url('/fonts/league-spartan/LeagueSpartan-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
+
 /* === Brand Colors === */
 :root {
-  --background: #1a191b;
-  --foreground: #cfb580;
+  --background: #1a181b;
+  --foreground: #cfb579;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1a191b;
-    --foreground: #cfb580;
+    --background: #1a181b;
+    --foreground: #cfb579;
   }
 }
 
