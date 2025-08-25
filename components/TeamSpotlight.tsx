@@ -67,7 +67,7 @@ export default function TeamSpotlight() {
                     </div>
 
                     {/* Bio section */}
-                    <div className="mt-10 text-center max-w-2xl text-white text-base leading-relaxed">
+                    <div className="mt-10 text-center max-w-3xl text-white text-3xl leading-relaxed">
                         <p>{team[activeIndex].bio}</p>
                     </div>
                 </div>
