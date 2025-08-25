@@ -5,7 +5,7 @@ import { useState } from 'react';
 const team = [
     {
         name: 'Adam Haisler',
-        role: 'Business Operations & Admin Manager',
+        role: 'Business Operations Manager',
         image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Adam%20Site%20Edit.jpg',
         bio: 'Adam runs the backend of the business and manages the administrative area',
     },
@@ -17,7 +17,7 @@ const team = [
     },
     {
         name: 'Johnathan Nguyen',
-        role: 'Director of Photograhy',
+        role: 'Director of Photography',
         image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Johnathan%20Site%20Edit.jpg',
         bio: 'Johnathan bridges creative vision and logistics, making stories come to life on screen.',
     },
