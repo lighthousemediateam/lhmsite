@@ -5,16 +5,16 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const team = [
   {
-    name: 'Adam Haisler',
-    role: 'Business Operations Manager',
-    image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Adam%20Site%20Edit.jpg',
-    bio: 'Adam oversees operations, finances, and partner coordination to keep projects running smoothly.',
-  },
-  {
     name: 'Jon Ly',
     role: 'CEO/Founder',
     image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Jon%20Site%20Edit.jpg',
     bio: 'Jon leads Light House Media with a commitment to meaningful storytelling and visual excellence.',
+  },
+  {
+    name: 'Adam Haisler',
+    role: 'Business Operations Manager',
+    image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Adam%20Site%20Edit.jpg',
+    bio: 'Adam oversees operations, finances, and partner coordination to keep projects running smoothly.',
   },
   {
     name: 'Johnathan Nguyen',
@@ -23,6 +23,7 @@ const team = [
     bio: 'Johnathan bridges creative vision and logistics, making stories come to life on screen.',
   },
 ];
+
 
 const mod = (n: number, m: number) => ((n % m) + m) % m;
 
@@ -50,7 +51,7 @@ export default function TeamSpotlightCarousel() {
         {/* Header */}
         <header className="flex items-end justify-between gap-6 mb-8">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wider">
-            Team Spotlight
+            
           </h2>
         </header>
 

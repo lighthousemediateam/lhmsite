@@ -10,17 +10,19 @@ export default function AboutPage() {
       <AboutProcess />
 
       {/* Side-by-side block */}
-      <section>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-16 lg:py-24">
-          {/* Make the right column larger */}
-          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_minmax(0,1.35fr)] gap-10 lg:gap-16 items-start">
-            {/* Shift Our Story left */}
-            <div className="min-w-0 lg:-ml-6 xl:-ml-10">
-              <OurStory />
+      <section aria-labelledby="about-team">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-10 lg:px-16 py-20 lg:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 xl:gap-28 items-start">
+            
+            {/* Our Story (left) */}
+            <div className="lg:col-span-5 min-w-0">
+              <div className="max-w-[60rem] lg:max-w-[68rem] xl:max-w-[72rem] mx-auto lg:mx-0 -ml-2 lg:-ml-6 xl:-ml-10 pr-2 lg:pr-6 xl:pr-12">
+                <OurStory />
+              </div>
             </div>
 
-            {/* Bigger Team Spotlight */}
-            <div className="min-w-0 lg:pr-2 xl:pr-4">
+            {/* Team Spotlight (right) */}
+            <div className="lg:col-span-7 min-w-0 lg:pl-10 xl:pl-14">
               <TeamSpotlight />
             </div>
           </div>
