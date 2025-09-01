@@ -14,13 +14,13 @@ const team = [
     name: 'Adam Haisler',
     role: 'Business Operations Manager',
     image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Adam%20Site%20Edit.jpg',
-    bio: `I’m Adam Haisler, Chief Business Officer at Lighthouse Media. My passion lies in building the foundation that lets creativity thrive. From managing operations and finances to streamlining logistics, I ensure that business operations run seamlessly from start to finish. For me, success isn’t just about efficiency — it’s about giving our team the freedom to focus on what they do best: telling powerful stories.`,
+    bio: `I’m Adam Haisler, Chief Business Officer at Lighthouse Media. My passion lies in building the foundation that lets creativity thrive. From managing operations and finances to streamlining logistics, I ensure that business operations run seamlessly from start to finish. For me, success isn’t just about efficiency, it’s about giving our team the freedom to focus on what they do best: telling powerful stories.`,
   },
   {
     name: 'Johnathan Nguyen',
     role: 'Director of Photography',
     image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Johnathan%20Site%20Edit.jpg',
-    bio: `I’m Johnathan Nguyen, Director of Photography at Lighthouse Media. From the moment I picked up a camera, I’ve been driven by the challenge of transforming ideas into striking visuals. My role is to bridge creative vision with technical precision — shaping light, movement, and composition so every frame tells a story with impact. For me, cinematography isn’t just about capturing images, it’s about creating an emotional experience that resonates with people long after they’ve watched. I strive to make each project not only look beautiful but feel unforgettable.`,
+    bio: `I’m Johnathan Nguyen, Director of Photography at Lighthouse Media. From the moment I picked up a camera, I’ve been driven by the challenge of transforming ideas into striking visuals. My role is to bridge creative vision with technical precision, shaping light, movement, and composition so every frame tells a story with impact. For me, cinematography isn’t just about capturing images, it’s about creating an emotional experience that resonates with people long after they’ve watched. I strive to make each project not only look beautiful but feel unforgettable.`,
   },
 ];
 

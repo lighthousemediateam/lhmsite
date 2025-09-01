@@ -11,7 +11,7 @@ export default function AboutProcess() {
             Growth
           </div>
           <div className="text-white text-xl leading-relaxed max-w-[600px] sm:text-[1.1rem] sm:max-w-full">
-            We believe in constant evolution—both creatively and personally. Whether it’s leveling up our skills, helping a client’s vision expand, or pushing the boundaries of what content can do, we’re always moving forward.
+            We believe in constant evolution, both creatively and personally. Whether it’s leveling up our skills, helping a client’s vision expand, or pushing the boundaries of what content can do, we’re always moving forward.
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@ export default function AboutProcess() {
             Creativity
           </div>
           <div className="text-white text-xl leading-relaxed max-w-[600px] sm:text-[1.1rem] sm:max-w-full">
-            Creativity is at the heart of everything we touch. From the way we shoot, edit, and tell stories to how we solve problems and serve our clients—every project is an opportunity to create something meaningful, bold, and unforgettable.
+            Creativity is at the heart of everything we touch. From the way we shoot, edit, and tell stories to how we solve problems and serve our clients. Every project is an opportunity to create something meaningful, bold, and unforgettable.
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ export default function AboutProcess() {
             Community
           </div>
           <div className="text-white text-xl leading-relaxed max-w-[600px] sm:text-[1.1rem] sm:max-w-full">
-            We’re in this together. Lighthouse was founded on relationships, and we keep that spirit alive by building genuine connections—with our team, our clients, and our city. When you work with us, you're not just hiring a media company—you’re joining a family.
+            We’re in this together. Lighthouse was founded on relationships, and we keep that spirit alive by building genuine connections with our team, our clients, and our city. When you work with us, you're not just hiring a media company, you’re joining a family.
 .
           </div>
         </div>
