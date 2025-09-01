@@ -8,7 +8,7 @@ const team = [
     name: 'Jon Ly',
     role: 'CEO/Founder',
     image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Jon%20Site%20Edit.jpg',
-    bio: 'Jon leads Light House Media with a commitment to meaningful storytelling and visual excellence.',
+    bio: 'I’m Jon Ly, Founder and CEO of Lighthouse Media. I picked up a camera over a decade ago and knew this is what I wanted to do. Not just with capturing moments, but with building relationships and turning raw ideas into powerful visuals. For me, content isn’t just creative work, it’s self-expression. I want to help others bring their stories to life the same way I did.',
   },
   {
     name: 'Adam Haisler',
