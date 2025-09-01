@@ -152,15 +152,16 @@ export default function TeamSpotlightCarousel() {
             </div>
           </div>
 
-          {/* RIGHT: Info — MOBILE ONLY (desktop is in header) */}
-          <aside className="md:hidden relative z-20 md:pl-4 lg:pl-8">
-            <div className="space-y-4">
-              <h3 className="text-3xl font-bold uppercase leading-tight text-white">
+          {/* Mobile info (centered) */}
+          <aside className="md:hidden relative z-20">
+            <div className="space-y-2 text-center">
+              <h3 className="text-3xl font-bold uppercase text-white">
                 {active.name}
               </h3>
               <p className="text-base text-white/90">{active.role}</p>
             </div>
           </aside>
+
         </div>
 
         {/* Dots (desktop) */}
