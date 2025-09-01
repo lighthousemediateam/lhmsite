@@ -65,7 +65,7 @@ export default function TeamSpotlightCarousel() {
             className="md:col-span-8 md:col-start-3 relative z-[60] isolate w-full overflow-visible flex justify-center"
             style={containerMinH}
           >
-            {/* Explicit width because children are absolute */}
+            {/* Desktop carousel: explicit width because children are absolute */}
             <div className="hidden md:block relative h-[600px] w-[680px]">
               {team.map((member, i) => {
                 const dist = mod(i - index, count);
@@ -102,7 +102,7 @@ export default function TeamSpotlightCarousel() {
                 );
               })}
 
-              {/* Desktop arrows (positioned over the carousel) */}
+              {/* Desktop arrows */}
               <div className="hidden md:flex absolute inset-0 items-center justify-between px-4 pointer-events-none">
                 <button
                   onClick={prev}
@@ -121,7 +121,7 @@ export default function TeamSpotlightCarousel() {
               </div>
             </div>
 
-            {/* Mobile swipe carousel */}
+            {/* Mobile swipe carousel + dots (dots are INSIDE this wrapper) */}
             <div className="md:hidden w-full">
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.article
@@ -149,27 +149,24 @@ export default function TeamSpotlightCarousel() {
                   </div>
                 </motion.article>
               </AnimatePresence>
-            </div>
-            {/* Mobile dots indicator */}
-            <div className="md:hidden flex justify-center mt-4">
-              <Dots current={index} total={count} onDot={setTo} />
-            </div>
 
+              {/* ✅ Mobile dots sit directly under the image */}
+              <div className="flex justify-center mt-4">
+                <Dots current={index} total={count} onDot={setTo} />
+              </div>
+            </div>
           </div>
 
           {/* Mobile info (centered) */}
           <aside className="md:hidden relative z-20">
             <div className="space-y-2 text-center">
-              <h3 className="text-3xl font-bold uppercase text-white">
-                {active.name}
-              </h3>
+              <h3 className="text-3xl font-bold uppercase text-white">{active.name}</h3>
               <p className="text-base text-white/90">{active.role}</p>
             </div>
           </aside>
-
         </div>
 
-        {/* Dots (desktop) */}
+        {/* Desktop dots (centered under carousel) */}
         <div className="hidden md:flex justify-center mt-6">
           <Dots current={index} total={count} onDot={setTo} />
         </div>
