@@ -121,7 +121,7 @@ export default function Header() {
 
       {/* MOBILE overlay menu */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 pt-24 bg-[#1a191b] flex flex-col items-center justify-center z-40 text-[#cfb580]">
+        <div className="md:hidden fixed inset-0 pt-24 bg-[#1a191b] flex flex-col items-center justify-center z-90 text-[#cfb580]">
           <div className="flex flex-col space-y-8 text-3xl font-bold uppercase">
             {navItems.map(({ label, href }) => (
               <Link
