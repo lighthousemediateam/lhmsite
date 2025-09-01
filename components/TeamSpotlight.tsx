@@ -20,7 +20,7 @@ const team = [
     name: 'Johnathan Nguyen',
     role: 'Director of Photography',
     image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Johnathan%20Site%20Edit.jpg',
-    bio: 'Johnathan bridges creative vision and logistics, making stories come to life on screen.',
+    bio: 'I’m Johnathan Nguyen, Director of Photography at Lighthouse Media. From the moment I picked up a camera, I’ve been driven by the challenge of transforming ideas into striking visuals. My role is to bridge creative vision with technical precision — shaping light, movement, and composition so every frame tells a story with impact. For me, cinematography isn’t just about capturing images, it’s about creating an emotional experience that resonates with people long after they’ve watched. I strive to make each project not only look beautiful but feel unforgettable.',
   },
 ];
 
