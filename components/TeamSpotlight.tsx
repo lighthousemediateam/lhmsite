@@ -14,7 +14,7 @@ const team = [
     name: 'Adam Haisler',
     role: 'Business Operations Manager',
     image: 'https://lhmcollective.b-cdn.net/Team%20Spotlight/Adam%20Site%20Edit.jpg',
-    bio: 'Adam oversees operations, finances, and partner coordination to keep projects running smoothly.',
+    bio: 'I’m Adam Haisler, Chief Business Officer at Lighthouse Media. My passion lies in building the foundation that lets creativity thrive. From managing operations and finances to streamlining logistics, I ensure that business operations run seamlessly from start to finish. For me, success isn’t just about efficiency — it’s about giving our team the freedom to focus on what they do best: telling powerful stories.',
   },
   {
     name: 'Johnathan Nguyen',
@@ -23,7 +23,6 @@ const team = [
     bio: 'Johnathan bridges creative vision and logistics, making stories come to life on screen.',
   },
 ];
-
 
 const mod = (n: number, m: number) => ((n % m) + m) % m;
 
@@ -48,28 +47,35 @@ export default function TeamSpotlightCarousel() {
   return (
     <section className="bg-[#1a191b] text-[#cfb580] font-league px-5 md:px-16 py-20">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+        {/* Header (intentionally empty per design) */}
         <header className="flex items-end justify-between gap-6 mb-8">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wider">
-            
-          </h2>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wider">{''}</h2>
         </header>
 
         {/* 2-column layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start overflow-visible relative">
           {/* LEFT: Horizontal photo carousel */}
-          <div className="md:col-span-8 relative z-[60] isolate w-full pr-4 md:pr-6 lg:pr-8 overflow-visible" style={containerMinH}>
+          <div
+            className="md:col-span-8 relative z-[60] isolate w-full pr-4 md:pr-6 lg:pr-8 overflow-visible"
+            style={containerMinH}
+          >
             <div className="hidden md:block relative h-[600px]">
               {team.map((member, i) => {
                 const dist = mod(i - index, count);
-                const layer = LAYERS[dist] ?? { scale: 0.8, x: dist * 300, z: 0, blur: 2, opacity: 0 };
+                const layer =
+                  LAYERS[dist] ?? { scale: 0.8, x: dist * 300, z: 0, blur: 2, opacity: 0 };
                 return (
                   <motion.article
                     key={member.name}
                     className="absolute inset-0 will-change-transform"
                     style={{ zIndex: layer.z as number }}
                     initial={false}
-                    animate={{ x: layer.x, scale: layer.scale, opacity: layer.opacity, filter: `blur(${layer.blur}px)` }}
+                    animate={{
+                      x: layer.x,
+                      scale: layer.scale,
+                      opacity: layer.opacity,
+                      filter: `blur(${layer.blur}px)`,
+                    }}
                     transition={{ type: 'spring', stiffness: 260, damping: 26 }}
                   >
                     <button
@@ -143,7 +149,9 @@ export default function TeamSpotlightCarousel() {
           {/* RIGHT: Info */}
           <aside className="md:col-span-4 relative z-20 md:pl-4 lg:pl-8">
             <div className="sticky top-28 space-y-4 md:ml-24">
-              <h3 className="text-3xl lg:text-4xl font-bold uppercase leading-tight text-white">{active.name}</h3>
+              <h3 className="text-3xl lg:text-4xl font-bold uppercase leading-tight text-white">
+                {active.name}
+              </h3>
               <p className="text-base md:text-lg text-white/90">{active.role}</p>
             </div>
           </aside>
@@ -155,15 +163,25 @@ export default function TeamSpotlightCarousel() {
         </div>
 
         {/* Bio */}
-        <div className="mt-10 md:mt-12 text-white text-xl md:text-2xl leading-relaxed max-w-4xl">
-          <p>{active.bio}</p>
+        <div className="mt-10 md:mt-12 max-w-4xl">
+          <div className="border-2 border-[#cfb580] rounded-3xl p-6 md:p-8 bg-transparent/0">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed">{active.bio}</p>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function Dots({ current, total, onDot }: { current: number; total: number; onDot: (i: number) => void }) {
+function Dots({
+  current,
+  total,
+  onDot,
+}: {
+  current: number;
+  total: number;
+  onDot: (i: number) => void;
+}) {
   return (
     <div className="flex items-center gap-2" role="tablist" aria-label="Team carousel">
       {Array.from({ length: total }).map((_, i) => (
@@ -173,7 +191,12 @@ function Dots({ current, total, onDot }: { current: number; total: number; onDot
           role="tab"
           aria-selected={i === current}
           aria-label={`Go to slide ${i + 1}`}
-          className={'h-2.5 w-2.5 rounded-full transition ' + (i === current ? 'bg-[#cfb580] scale-110' : 'bg-[#cfb580]/30 hover:bg-[#cfb580]/60')}
+          className={
+            'h-2.5 w-2.5 rounded-full transition ' +
+            (i === current
+              ? 'bg-[#cfb580] scale-110'
+              : 'bg-[#cfb580]/30 hover:bg-[#cfb580]/60')
+          }
         />
       ))}
     </div>
