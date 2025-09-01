@@ -42,7 +42,7 @@ export default function AboutProcess() {
           </div>
           <div className="text-white text-xl leading-relaxed max-w-[600px] sm:text-[1.1rem] sm:max-w-full">
             We’re in this together. Lighthouse was founded on relationships, and we keep that spirit alive by building genuine connections with our team, our clients, and our city. When you work with us, you're not just hiring a media company, you’re joining a family.
-.
+
           </div>
         </div>
       </div>

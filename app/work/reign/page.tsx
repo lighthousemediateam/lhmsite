@@ -34,7 +34,7 @@ export default function REIGNPage() {
         </p>
         <br />
         <p>
-          We've also supported their UK branch with an international shoot in Ibiza, Spain. From athlete casting to content planning, we create performance-driven media tailored to each platform — including one viral Instagram video that reached 8.2 million organic views.
+          We've also supported their UK branch with an international shoot in Ibiza, Spain. From athlete casting to content planning, we create performance-driven media tailored to each platform including one viral Instagram video that reached 8.2 million organic views.
         </p>
         <br />
         <p>

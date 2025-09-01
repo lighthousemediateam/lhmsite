@@ -121,8 +121,15 @@ export default function TeamSpotlightCarousel() {
               </div>
             </div>
 
-            {/* Mobile swipe carousel + dots (dots are INSIDE this wrapper) */}
+            {/* Mobile: name/title ABOVE image + dots BELOW image */}
             <div className="md:hidden w-full">
+              {/* name/title above image */}
+              <div className="text-center mb-3">
+                <h3 className="text-3xl font-bold uppercase text-white">{active.name}</h3>
+                <p className="text-base text-white/90">{active.role}</p>
+              </div>
+
+              {/* image */}
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.article
                   key={active.name}
@@ -150,20 +157,12 @@ export default function TeamSpotlightCarousel() {
                 </motion.article>
               </AnimatePresence>
 
-              {/* ✅ Mobile dots sit directly under the image */}
+              {/* dots under image */}
               <div className="flex justify-center mt-4">
                 <Dots current={index} total={count} onDot={setTo} />
               </div>
             </div>
           </div>
-
-          {/* Mobile info (centered) */}
-          <aside className="md:hidden relative z-20">
-            <div className="space-y-2 text-center">
-              <h3 className="text-3xl font-bold uppercase text-white">{active.name}</h3>
-              <p className="text-base text-white/90">{active.role}</p>
-            </div>
-          </aside>
         </div>
 
         {/* Desktop dots (centered under carousel) */}
