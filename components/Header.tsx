@@ -68,14 +68,14 @@ export default function Header() {
       {/* MOBILE fixed hamburger icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed top-1 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-50"
+        className="md:hidden fixed top-1 right-4 bg-[#cfb580] rounded-full p-3 shadow-lg z-100"
       >
         {isOpen ? <X className="text-black w-5 h-5" /> : <Menu className="text-black w-5 h-5" />}
       </button>
 
       {/* DESKTOP header with scroll behavior */}
       <header
-        className={`hidden md:flex fixed top-0 left-0 w-full z-50 bg-transparent px-6 py-8 items-center justify-between transition-transform duration-300 ${isScrollingUp ? 'translate-y-0' : '-translate-y-full'
+        className={`hidden md:flex fixed top-0 left-0 w-full z-100 bg-transparent px-6 py-8 items-center justify-between transition-transform duration-300 ${isScrollingUp ? 'translate-y-0' : '-translate-y-full'
           }`}
       >
         <Link
