@@ -150,6 +150,11 @@ export default function TeamSpotlightCarousel() {
                 </motion.article>
               </AnimatePresence>
             </div>
+            {/* Mobile dots indicator */}
+            <div className="md:hidden flex justify-center mt-4">
+              <Dots current={index} total={count} onDot={setTo} />
+            </div>
+
           </div>
 
           {/* Mobile info (centered) */}
