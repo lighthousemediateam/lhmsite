@@ -21,9 +21,14 @@ export default function Footer() {
           </nav>
         </div>
 
-        {/* Bottom Line */}
-        <div className="mt-8 text-xs text-right">
-          © 2025 Light House Media. All rights reserved.
+        {/* Bottom Section */}
+        <div className="mt-8">
+          <p className="text-xs text-right">
+            © 2025 Light House Media. All rights reserved.
+          </p>
+          <p className="text-xs text-center mt-2 opacity-75">
+            This site was built and maintained by Light House Media
+          </p>
         </div>
       </div>
     </footer>

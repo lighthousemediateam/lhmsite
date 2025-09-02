@@ -121,7 +121,7 @@ export default function TeamSpotlightCarousel() {
               </div>
             </div>
 
-            {/* Mobile: name/title ABOVE image + dots BELOW image */}
+            {/* Mobile: name/title ABOVE image + arrows OVER image + dots BELOW image */}
             <div className="md:hidden w-full">
               {/* name/title above image */}
               <div className="text-center mb-3">
@@ -129,39 +129,51 @@ export default function TeamSpotlightCarousel() {
                 <p className="text-base text-white/90">{active.role}</p>
               </div>
 
-              {/* image */}
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.article
-                  key={active.name}
-                  className="rounded-3xl overflow-hidden border border-[#cfb580]/20 bg-[#1f1e20]"
-                  initial={{ opacity: 0, x: 80 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -80 }}
-                  transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  onDragEnd={(e, info) => {
-                    const threshold = 80;
-                    if (info.offset.x < -threshold) next();
-                    else if (info.offset.x > threshold) prev();
-                  }}
-                >
-                  <div className="w-full aspect-[3/4] relative">
+              {/* image with arrows */}
+              <div className="relative w-full aspect-[3/4]">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.article
+                    key={active.name}
+                    className="rounded-3xl overflow-hidden border border-[#cfb580]/20 bg-[#1f1e20] w-full h-full"
+                    initial={{ opacity: 0, x: 80 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -80 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+                  >
                     <img
                       src={active.image}
                       alt={active.name}
-                      className="absolute inset-0 w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-top"
                       draggable={false}
                     />
-                  </div>
-                </motion.article>
-              </AnimatePresence>
+                  </motion.article>
+                </AnimatePresence>
+
+                {/* left arrow */}
+                <button
+                  onClick={prev}
+                  className="absolute top-1/2 -translate-y-1/2 left-2 bg-black/50 text-[#cfb580] p-2 rounded-full hover:bg-black/70"
+                  aria-label="Previous"
+                >
+                  ‹
+                </button>
+
+                {/* right arrow */}
+                <button
+                  onClick={next}
+                  className="absolute top-1/2 -translate-y-1/2 right-2 bg-black/50 text-[#cfb580] p-2 rounded-full hover:bg-black/70"
+                  aria-label="Next"
+                >
+                  ›
+                </button>
+              </div>
 
               {/* dots under image */}
               <div className="flex justify-center mt-4">
                 <Dots current={index} total={count} onDot={setTo} />
               </div>
             </div>
+
           </div>
         </div>
 
