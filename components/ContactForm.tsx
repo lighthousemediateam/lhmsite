@@ -1,5 +1,4 @@
 'use client';
-
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -8,8 +7,18 @@ export default function ContactForm() {
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!form.current) return;
+
+    // Combine first + last name into a single "name" field for EmailJS
+    const formData = new FormData(form.current);
+    const firstName = formData.get('first_name') as string;
+    const lastName = formData.get('last_name') as string;
+
+    const nameInput = document.createElement('input');
+    nameInput.type = 'hidden';
+    nameInput.name = 'name';
+    nameInput.value = `${firstName} ${lastName}`.trim();
+    form.current.appendChild(nameInput);
 
     emailjs
       .sendForm(
@@ -20,27 +29,28 @@ export default function ContactForm() {
       )
       .then(() => {
         alert('Message sent!');
+        form.current?.removeChild(nameInput);
         form.current?.reset();
       })
       .catch((error) => {
         console.error('EmailJS error:', error);
         alert('Something went wrong. Please try again.');
+        form.current?.removeChild(nameInput);
       });
   };
 
   return (
     <section className="bg-[#1a191b] text-[#cfb580] font-league py-24 px-6">
-      <div className="h-20" /> {/* Spacer above headline */}
-
+      <div className="h-20" />
       <div className="max-w-2xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-wide mb-4">
-          Lights, Camera, Let’s Talk.
+          Lights, Camera, Let's Talk.
         </h1>
         <p className="text-[#ffffff] text-lg mb-12">
           Tell us a little about your project.
         </p>
-
         <form ref={form} onSubmit={sendEmail} className="space-y-8">
+
           {/* Name fields */}
           <div className="flex flex-col md:flex-row gap-6">
             <div className="flex-1">
@@ -68,13 +78,13 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Email */}
+          {/* Email — named "reply_to" so EmailJS auto-reply goes to them */}
           <div>
             <label className="block mb-2 text-sm uppercase text-[#cfb580]">
               Email <span className="text-red-500">*</span>
             </label>
             <input
-              name="email"
+              name="reply_to"
               type="email"
               required
               className="w-full bg-transparent border border-[#cfb580] rounded-full px-4 py-3 text-white placeholder-gray-400"
