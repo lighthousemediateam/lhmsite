@@ -9,7 +9,6 @@ export default function ContactForm() {
     e.preventDefault();
     if (!form.current) return;
 
-    // Combine first + last name into a single "name" field for EmailJS
     const formData = new FormData(form.current);
     const firstName = formData.get('first_name') as string;
     const lastName = formData.get('last_name') as string;
@@ -20,22 +19,26 @@ export default function ContactForm() {
     nameInput.value = `${firstName} ${lastName}`.trim();
     form.current.appendChild(nameInput);
 
+    console.log('Sending to template_pfl56yu...');
+
     emailjs
       .sendForm(
         'service_21ld30f',
-        'template_pfl56yu', // Notification — sends to your business email
+        'template_pfl56yu',
         form.current,
         'xtBfTgfimdpJMj4hv'
       )
-      .then(() => {
+      .then((result) => {
+        console.log('Notification sent:', result);
         return emailjs.sendForm(
           'service_21ld30f',
-          'template_bss730h', // Auto-reply — sends back to the user
+          'template_bss730h',
           form.current!,
           'xtBfTgfimdpJMj4hv'
         );
       })
-      .then(() => {
+      .then((result) => {
+        console.log('Auto-reply sent:', result);
         alert('Message sent!');
         form.current?.removeChild(nameInput);
         form.current?.reset();
