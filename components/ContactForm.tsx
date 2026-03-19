@@ -23,10 +23,18 @@ export default function ContactForm() {
     emailjs
       .sendForm(
         'service_21ld30f',
-        'template_bss730h',
+        'template_pfl56yu', // Notification — sends to your business email
         form.current,
         'xtBfTgfimdpJMj4hv'
       )
+      .then(() => {
+        return emailjs.sendForm(
+          'service_21ld30f',
+          'template_bss730h', // Auto-reply — sends back to the user
+          form.current!,
+          'xtBfTgfimdpJMj4hv'
+        );
+      })
       .then(() => {
         alert('Message sent!');
         form.current?.removeChild(nameInput);
