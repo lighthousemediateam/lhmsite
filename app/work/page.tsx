@@ -1,5 +1,4 @@
 'use client';
-import Head from 'next/head';
 import { useEffect } from 'react';
 
 const workItems = [
@@ -113,23 +112,10 @@ export default function WorkPage() {
 
   return (
     <>
-      <Head>
-        <title>Dallas Videographer | Light House Media</title>
-        <meta
-          name="description"
-          content="Professional videography and photography in Dallas for brands, events, gyms, lawyers, corporate parties, drone work, and real estate."
-        />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Dallas Videographer | Light House Media" />
-        <meta property="og:description" content="Professional video and photo production in Dallas, TX." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.lhmcollective.com/work" />
-        <meta property="og:image" content="https://www.lhmcollective.com/og-preview.jpg" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchemas) }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchemas) }}
+      />
 
       <div className="bg-[#1a191b] text-[#cfb580] min-h-screen px-0 pt-28 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">

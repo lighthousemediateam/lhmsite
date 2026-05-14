@@ -1,3 +1,26 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Us | Dallas Creative Media Agency',
+  description:
+    'Meet the team behind Light House Media — a Dallas-based creative agency telling brand stories through cinematic video and photography across DFW and beyond.',
+  keywords: [
+    'Dallas creative agency',
+    'Dallas video production team',
+    'Light House Media team',
+    'about LHM Creative',
+    'Dallas media company',
+  ],
+  alternates: { canonical: 'https://www.lhmcollective.com/about' },
+  openGraph: {
+    title: 'About Light House Media | Dallas Creative Agency',
+    description:
+      'Meet the Dallas team crafting cinematic brand stories through video and photography.',
+    url: 'https://www.lhmcollective.com/about',
+    type: 'website',
+  },
+};
+
 import AboutHero from "@/components/AboutHero";
 import AboutProcess from "@/components/AboutProcess";
 import OurStory from "@/components/OurStory";

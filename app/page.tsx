@@ -1,11 +1,28 @@
 export const metadata = {
-  title: "Dallas Videographer | Light House Media",
-  description: "Creative media agency crafting cinematic visuals and strategic storytelling to elevate your brand and connect with your audience.",
+  title: "Dallas Videographer & Photographer | Light House Media",
+  description:
+    "Light House Media is Dallas's premier creative agency for cinematic video production, brand photography, and UGC content. Trusted by REIGN, Virgin Hotels, Cuisinart, Arnold Sports & more.",
+  keywords: [
+    "Dallas videographer",
+    "Dallas photographer",
+    "Dallas video production company",
+    "cinematic videographer Dallas TX",
+    "brand photography Dallas",
+    "social media video production Dallas",
+    "DFW creative agency",
+  ],
+  alternates: { canonical: "https://www.lhmcollective.com" },
+  openGraph: {
+    title: "Light House Media | Dallas Videographer & Photographer",
+    description:
+      "Cinematic video & brand photography in Dallas, TX. Trusted by REIGN, Virgin Hotels, Cuisinart, Arnold Sports & more.",
+    url: "https://www.lhmcollective.com",
+    type: "website",
+  },
 };
 
 import Link from 'next/link';
 import ClientBanner from '../components/ClientBanner';
-import styles from './ClientBanner.module.css';
 import ServicesSection from '@/components/ServicesSection';
 
 export default function Home() {
@@ -80,7 +97,7 @@ export default function Home() {
               {
                 src: "https://lhmcollective.b-cdn.net/Logos/ppa_logo_white.png",
                 alt: "PPA",
-                href: "/work/ppa",
+                href: "/work/reign-storm",
               },
               {
                 src: "https://lhmcollective.b-cdn.net/Logos/reign_storm_logo_final_cleaned_v3.png",
@@ -95,7 +112,7 @@ export default function Home() {
               {
                 src: "https://lhmcollective.b-cdn.net/Logos/arnold_sports_logo_white.png",
                 alt: "Arnold",
-                href: "/work/arnold",
+                href: "/work/reign",
               },
               {
                 src: "https://lhmcollective.b-cdn.net/Logos/avondale%20logo.png",
@@ -106,7 +123,7 @@ export default function Home() {
               {
                 src: "https://lhmcollective.b-cdn.net/Logos/ChatGPT%20Image%20Jul%2013,%202025%20at%2006_58_21%20PM.png",
                 alt: "Even Embers",
-                href: "/work/even-embers",
+                href: "/contact",
                 scale: "scale-[2]",
               },
               {

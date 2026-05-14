@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import styles from './ClientBanner.module.css';
 
 const bannerItems = [
@@ -54,7 +53,7 @@ export default function ClientBanner() {
               playsInline
               autoPlay
               loop
-              preload="auto"
+              preload="metadata"
               className={styles.video}
             />
             <img
