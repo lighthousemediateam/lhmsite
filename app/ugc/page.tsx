@@ -91,11 +91,14 @@ export default function UGCPage() {
       ([entry]) => {
         if (entry.isIntersecting && !hintShown.current) {
           hintShown.current = true;
-          setShowHint(true);
-          setTimeout(() => setShowHint(false), 2800);
+          // Small delay so user has a moment to see the hint after scrolling in
+          setTimeout(() => {
+            setShowHint(true);
+            setTimeout(() => setShowHint(false), 2800);
+          }, 400);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.1 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -189,7 +192,27 @@ export default function UGCPage() {
           {/* ── Carousel column ── */}
           <div ref={carouselRef} className="flex-1 flex flex-col items-center">
 
-            {/* 3D scene — 100px top pad keeps cards from clipping */}
+            {/* 3D scene — wrapper provides full width for mobile side arrows */}
+            <div className="relative w-full flex justify-center">
+
+              {/* Mobile left arrow */}
+              <button
+                onClick={goPrev}
+                aria-label="Previous"
+                className="lg:hidden absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
+              >
+                ←
+              </button>
+
+              {/* Mobile right arrow */}
+              <button
+                onClick={goNext}
+                aria-label="Next"
+                className="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
+              >
+                →
+              </button>
+
             <div
               className="relative"
               style={{ perspective: '1000px', width: `${CARD_W}px`, height: `${CARD_H + 160}px` }}
@@ -285,6 +308,7 @@ export default function UGCPage() {
                 })}
               </div>
             </div>
+            </div>{/* end scene wrapper */}
 
             {/* Swipe hint — mobile only, fades in then out */}
             <AnimatePresence>
@@ -310,7 +334,7 @@ export default function UGCPage() {
               <button
                 onClick={goPrev}
                 aria-label="Previous"
-                className="w-10 h-10 rounded-full border border-[#cfb580]/35 flex items-center justify-center hover:bg-[#cfb580] hover:text-[#1a191b] transition text-lg"
+                className="hidden lg:flex w-10 h-10 rounded-full border border-[#cfb580]/35 items-center justify-center hover:bg-[#cfb580] hover:text-[#1a191b] transition text-lg"
               >
                 ←
               </button>
@@ -335,7 +359,7 @@ export default function UGCPage() {
               <button
                 onClick={goNext}
                 aria-label="Next"
-                className="w-10 h-10 rounded-full border border-[#cfb580]/35 flex items-center justify-center hover:bg-[#cfb580] hover:text-[#1a191b] transition text-lg"
+                className="hidden lg:flex w-10 h-10 rounded-full border border-[#cfb580]/35 items-center justify-center hover:bg-[#cfb580] hover:text-[#1a191b] transition text-lg"
               >
                 →
               </button>
