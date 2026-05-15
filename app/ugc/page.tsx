@@ -94,7 +94,7 @@ export default function UGCPage() {
           // Small delay so user has a moment to see the hint after scrolling in
           setTimeout(() => {
             setShowHint(true);
-            setTimeout(() => setShowHint(false), 2800);
+            setTimeout(() => setShowHint(false), 1500); // stay 1.5s, then 1.5s fade exit
           }, 400);
         }
       },
@@ -195,23 +195,45 @@ export default function UGCPage() {
             {/* 3D scene — wrapper provides full width for mobile side arrows */}
             <div className="relative w-full flex justify-center">
 
-              {/* Mobile left arrow */}
+              {/* Mobile left arrow — centered on card left edge */}
               <button
                 onClick={goPrev}
                 aria-label="Previous"
-                className="lg:hidden absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
+                className="lg:hidden absolute z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
+                style={{ left: `calc(50% - ${CARD_W / 2 + 22}px)`, top: `${CARD_H / 2 + 80}px`, transform: 'translateY(-50%)' }}
               >
                 ←
               </button>
 
-              {/* Mobile right arrow */}
+              {/* Mobile right arrow — centered on card right edge */}
               <button
                 onClick={goNext}
                 aria-label="Next"
-                className="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
+                className="lg:hidden absolute z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
+                style={{ left: `calc(50% + ${CARD_W / 2 - 22}px)`, top: `${CARD_H / 2 + 80}px`, transform: 'translateY(-50%)' }}
               >
                 →
               </button>
+
+              {/* Swipe hint — centered overlay on active card, mobile only */}
+              <AnimatePresence>
+                {showHint && (
+                  <motion.div
+                    className="lg:hidden absolute pointer-events-none z-30"
+                    style={{ left: '50%', top: `${CARD_H / 2 + 80}px`, transform: 'translate(-50%, -50%)' }}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, transition: { duration: 1.5, ease: 'easeOut' } }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <div className="flex items-center gap-3 px-7 py-3.5 rounded-full bg-black/60 backdrop-blur-md border border-[#cfb580]/30 text-[#cfb580] text-base font-medium uppercase tracking-[0.18em] whitespace-nowrap">
+                      <span>←</span>
+                      <span>Swipe to explore</span>
+                      <span>→</span>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
             <div
               className="relative"
@@ -309,25 +331,6 @@ export default function UGCPage() {
               </div>
             </div>
             </div>{/* end scene wrapper */}
-
-            {/* Swipe hint — mobile only, fades in then out */}
-            <AnimatePresence>
-              {showHint && (
-                <motion.div
-                  className="lg:hidden mt-8"
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  transition={{ duration: 0.45 }}
-                >
-                  <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#cfb580]/10 border border-[#cfb580]/20 text-[#cfb580]/60 text-[10px] uppercase tracking-[0.22em]">
-                    <span>←</span>
-                    <span>Swipe to explore</span>
-                    <span>→</span>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
 
             {/* Navigation */}
             <div className="flex items-center gap-5 mt-10 lg:mt-16">
