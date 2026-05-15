@@ -56,6 +56,14 @@ export default function UGCPage() {
   const [playing,  setPlaying]  = useState<boolean[]>(Array(reels.length).fill(false));
   const [muted,    setMuted]    = useState<boolean[]>(Array(reels.length).fill(true));
 
+  // Swipe hint (mobile only — shows once when carousel scrolls into view)
+  const [showHint, setShowHint] = useState(false);
+  const hintShown   = useRef(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Touch tracking for swipe
+  const touchStartX = useRef(0);
+
   // Pause current video when navigating away
   const pauseActive = useCallback(() => {
     const v = videoRefs.current[activeIndex];
@@ -74,6 +82,24 @@ export default function UGCPage() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   });
+
+  // Show swipe hint once on mobile when carousel enters view
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hintShown.current) {
+          hintShown.current = true;
+          setShowHint(true);
+          setTimeout(() => setShowHint(false), 2800);
+        }
+      },
+      { threshold: 0.4 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const handlePlay  = (i: number) => {
     setPlaying(prev => prev.map((_, idx) => idx === i));
@@ -161,12 +187,17 @@ export default function UGCPage() {
         <div className="max-w-[1400px] mx-auto px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
 
           {/* ── Carousel column ── */}
-          <div className="flex-1 flex flex-col items-center">
+          <div ref={carouselRef} className="flex-1 flex flex-col items-center">
 
             {/* 3D scene — 100px top pad keeps cards from clipping */}
             <div
               className="relative"
               style={{ perspective: '1000px', width: `${CARD_W}px`, height: `${CARD_H + 160}px` }}
+              onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
+              onTouchEnd={e => {
+                const diff = touchStartX.current - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) diff > 0 ? goNext() : goPrev();
+              }}
             >
               {/* Rotating drum — zero-size, offset down to give 80px top clearance */}
               <div
@@ -255,8 +286,27 @@ export default function UGCPage() {
               </div>
             </div>
 
+            {/* Swipe hint — mobile only, fades in then out */}
+            <AnimatePresence>
+              {showHint && (
+                <motion.div
+                  className="lg:hidden mt-8"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
+                  transition={{ duration: 0.45 }}
+                >
+                  <div className="flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#cfb580]/10 border border-[#cfb580]/20 text-[#cfb580]/60 text-[10px] uppercase tracking-[0.22em]">
+                    <span>←</span>
+                    <span>Swipe to explore</span>
+                    <span>→</span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* Navigation */}
-            <div className="flex items-center gap-5 mt-12">
+            <div className="flex items-center gap-5 mt-10 lg:mt-16">
               <button
                 onClick={goPrev}
                 aria-label="Previous"
