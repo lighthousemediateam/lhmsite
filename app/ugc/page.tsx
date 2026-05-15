@@ -192,10 +192,10 @@ export default function UGCPage() {
           {/* ── Carousel column ── */}
           <div ref={carouselRef} className="flex-1 flex flex-col items-center">
 
-            {/* 3D scene — wrapper provides full width for mobile side arrows */}
-            <div className="relative w-full flex justify-center">
+            {/* Wrapper: plain block (not flex) so 3D overflow isn't clipped by flex context */}
+            <div className="relative w-full" style={{ overflow: 'visible' }}>
 
-              {/* Mobile left arrow — 15% further out from card left edge */}
+              {/* Mobile left arrow */}
               <button
                 onClick={goPrev}
                 aria-label="Previous"
@@ -205,7 +205,7 @@ export default function UGCPage() {
                 ←
               </button>
 
-              {/* Mobile right arrow — 15% further out from card right edge */}
+              {/* Mobile right arrow */}
               <button
                 onClick={goNext}
                 aria-label="Next"
@@ -216,7 +216,6 @@ export default function UGCPage() {
               </button>
 
               {/* Swipe hint — centered overlay on active card, mobile only */}
-              {/* x/y passed as Framer Motion values so scale doesn't override the centering transform */}
               <AnimatePresence>
                 {showHint && (
                   <motion.div
@@ -237,8 +236,8 @@ export default function UGCPage() {
               </AnimatePresence>
 
             <div
-              className="relative"
-              style={{ perspective: '1000px', width: `${CARD_W}px`, height: `${CARD_H + 160}px` }}
+              className="relative mx-auto"
+              style={{ perspective: '1000px', width: `${CARD_W}px`, height: `${CARD_H + 160}px`, overflow: 'visible' }}
               onTouchStart={e => { touchStartX.current = e.touches[0].clientX; }}
               onTouchEnd={e => {
                 const diff = touchStartX.current - e.changedTouches[0].clientX;
