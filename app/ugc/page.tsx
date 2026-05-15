@@ -195,35 +195,36 @@ export default function UGCPage() {
             {/* 3D scene — wrapper provides full width for mobile side arrows */}
             <div className="relative w-full flex justify-center">
 
-              {/* Mobile left arrow — centered on card left edge */}
+              {/* Mobile left arrow — 15% further out from card left edge */}
               <button
                 onClick={goPrev}
                 aria-label="Previous"
                 className="lg:hidden absolute z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
-                style={{ left: `calc(50% - ${CARD_W / 2 + 22}px)`, top: `${CARD_H / 2 + 80}px`, transform: 'translateY(-50%)' }}
+                style={{ left: `calc(50% - ${CARD_W / 2 + 55}px)`, top: `${CARD_H / 2 + 80}px`, transform: 'translateY(-50%)' }}
               >
                 ←
               </button>
 
-              {/* Mobile right arrow — centered on card right edge */}
+              {/* Mobile right arrow — 15% further out from card right edge */}
               <button
                 onClick={goNext}
                 aria-label="Next"
                 className="lg:hidden absolute z-20 w-11 h-11 rounded-full border border-[#cfb580]/35 bg-[#1a191b]/70 backdrop-blur-sm flex items-center justify-center text-[#cfb580] text-lg active:bg-[#cfb580] active:text-[#1a191b] transition"
-                style={{ left: `calc(50% + ${CARD_W / 2 - 22}px)`, top: `${CARD_H / 2 + 80}px`, transform: 'translateY(-50%)' }}
+                style={{ left: `calc(50% + ${CARD_W / 2 + 11}px)`, top: `${CARD_H / 2 + 80}px`, transform: 'translateY(-50%)' }}
               >
                 →
               </button>
 
               {/* Swipe hint — centered overlay on active card, mobile only */}
+              {/* x/y passed as Framer Motion values so scale doesn't override the centering transform */}
               <AnimatePresence>
                 {showHint && (
                   <motion.div
                     className="lg:hidden absolute pointer-events-none z-30"
-                    style={{ left: '50%', top: `${CARD_H / 2 + 80}px`, transform: 'translate(-50%, -50%)' }}
-                    initial={{ opacity: 0, scale: 0.92 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 1.5, ease: 'easeOut' } }}
+                    style={{ left: '50%', top: `${CARD_H / 2 + 80}px` }}
+                    initial={{ opacity: 0, scale: 0.92, x: '-50%', y: '-50%' }}
+                    animate={{ opacity: 1, scale: 1,  x: '-50%', y: '-50%' }}
+                    exit={{ opacity: 0, x: '-50%', y: '-50%', transition: { duration: 1.5, ease: 'easeOut' } }}
                     transition={{ duration: 0.35 }}
                   >
                     <div className="flex items-center gap-3 px-7 py-3.5 rounded-full bg-black/60 backdrop-blur-md border border-[#cfb580]/30 text-[#cfb580] text-base font-medium uppercase tracking-[0.18em] whitespace-nowrap">
