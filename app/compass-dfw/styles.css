@@ -1,0 +1,102 @@
+/* Hook-reel treatment — scoped to /compass-dfw via .cdfw-* classes only. */
+
+/* Film grain wash over the whole page */
+.cdfw-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Timecode index in section eyebrows */
+.cdfw-tc {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(207, 181, 128, 0.55);
+}
+
+/* Gold payoff word + underline sweep (0 → 100% on section entry) */
+.cdfw-sweep {
+  position: relative;
+  color: #cfb580;
+  white-space: nowrap;
+}
+.cdfw-sweep::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.055em;
+  width: 100%;
+  background: #cfb580;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+[data-reveal].is-in .cdfw-sweep::after {
+  transform: scaleX(1);
+}
+
+/* Scroll reveal: children fade + rise with staggered delays.
+   Hidden state only applies once JS has run (html.cdfw-js), so the page
+   is fully readable with no JavaScript. */
+html.cdfw-js [data-reveal] .cdfw-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+html.cdfw-js [data-reveal].is-in .cdfw-reveal {
+  opacity: 1;
+  transform: none;
+}
+.cdfw-d1 { transition-delay: 0.1s !important; }
+.cdfw-d2 { transition-delay: 0.2s !important; }
+.cdfw-d3 { transition-delay: 0.3s !important; }
+.cdfw-d4 { transition-delay: 0.4s !important; }
+
+/* Viewfinder brackets framing the hero headline — desktop only */
+.cdfw-bracket {
+  display: none;
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(207, 181, 128, 0.7);
+}
+@media (min-width: 768px) {
+  .cdfw-bracket { display: block; }
+}
+.cdfw-bracket--tl { top: -26px; left: -34px; border-right: 0; border-bottom: 0; }
+.cdfw-bracket--br { bottom: -26px; right: -34px; border-left: 0; border-top: 0; }
+
+/* Cinematic package cards */
+.cdfw-card {
+  background: linear-gradient(180deg, #201e22 0%, #141316 100%);
+}
+
+/* Visible keyboard focus on CTA + form fields */
+.cdfw a:focus-visible,
+.cdfw button:focus-visible,
+.cdfw input:focus-visible,
+.cdfw select:focus-visible,
+.cdfw textarea:focus-visible {
+  outline: 2px solid #cfb580;
+  outline-offset: 3px;
+}
+
+/* Reduced motion: everything resolves to its final state, no animation */
+@media (prefers-reduced-motion: reduce) {
+  html.cdfw-js [data-reveal] .cdfw-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .cdfw-sweep::after {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
