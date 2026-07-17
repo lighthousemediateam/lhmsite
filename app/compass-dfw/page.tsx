@@ -84,10 +84,25 @@ export default function CompassDfwLanding() {
         </div>
       </section>
 
-      {/* ── 03 · Made in the Metroplex ── */}
+      {/* ── 03 · The Difference ── */}
       <section data-reveal className="py-20 md:py-32 px-6 border-t border-[#cfb580]/15">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="cdfw-tc cdfw-reveal">03 · Local</p>
+          <p className="cdfw-tc cdfw-reveal">03 · The Difference</p>
+          <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[4.05rem] font-bold uppercase leading-[0.98] text-white">
+            A better camera won&apos;t save a <span className="cdfw-sweep">boring idea.</span>
+          </h2>
+          <p className="cdfw-reveal cdfw-d2 mt-7 text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
+            You can shoot on the best gear money buys and still get scrolled past. The hook, the
+            story, the reason to care, that&apos;s what earns the watch, and that&apos;s what we
+            bring to every reel.
+          </p>
+        </div>
+      </section>
+
+      {/* ── 04 · Made in the Metroplex ── */}
+      <section data-reveal className="py-20 md:py-32 px-6 border-t border-[#cfb580]/15">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="cdfw-tc cdfw-reveal">04 · Local</p>
           <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[4.05rem] font-bold uppercase leading-[0.98] text-white">
             Made in the <span className="cdfw-sweep">Metroplex.</span>
           </h2>
@@ -104,11 +119,11 @@ export default function CompassDfwLanding() {
         </div>
       </section>
 
-      {/* ── 04 · Packages ── */}
+      {/* ── 05 · Packages ── */}
       <section data-reveal className="py-20 md:py-32 px-6 border-t border-[#cfb580]/15">
         <div className="max-w-5xl mx-auto">
           <div className="text-center">
-            <p className="cdfw-tc cdfw-reveal">04 · The Packages</p>
+            <p className="cdfw-tc cdfw-reveal">05 · The Packages</p>
             <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[4.05rem] font-bold uppercase leading-[0.98] text-white">
               Same team. Different <span className="cdfw-sweep">camera.</span>
             </h2>
@@ -165,7 +180,7 @@ export default function CompassDfwLanding() {
         </div>
       </section>
 
-      {/* ── 05 · Intake form ── */}
+      {/* ── 06 · Intake form ── */}
       <section
         id="intake"
         data-reveal
@@ -173,7 +188,7 @@ export default function CompassDfwLanding() {
       >
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <p className="cdfw-tc cdfw-reveal">05 · Get Started</p>
+            <p className="cdfw-tc cdfw-reveal">06 · Let&apos;s Talk</p>
             <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[3.375rem] font-bold uppercase leading-[0.98] text-white">
               Get content that <span className="cdfw-sweep">performs.</span>
             </h2>
