@@ -32,31 +32,56 @@ export default function CompassDfwLanding() {
       <section className="flex flex-col items-center justify-center text-center px-6 pt-10 pb-16 md:pt-24 md:pb-24">
         <IPhoneBadge>Shot on iPhone · Edited by LHM</IPhoneBadge>
         <h1 className="mt-6 text-5xl sm:text-6xl md:text-7xl font-bold uppercase leading-[0.95] max-w-4xl">
-          Scroll-Stopping Content for DFW Brands
-          <br />
-          <span className="text-white">Shot on iPhone, Edited by LHM</span>
+          Posting Isn&apos;t the Same as <span className="text-white">Performing.</span>
         </h1>
+        <p className="mt-6 text-lg sm:text-xl md:text-2xl max-w-2xl text-[#cfb580]/80">
+          You can post every day and still get scrolled past. The difference is the content
+          itself — the story, the edit, the hook. That&apos;s all we do. Built for DFW brands
+          done blending in.
+        </p>
         <a
           href="#intake"
           className="mt-10 inline-block bg-[#cfb580] text-[#1a191b] font-semibold uppercase tracking-wide px-10 py-4 rounded-full hover:bg-white transition-all duration-300 text-lg"
         >
-          Get Your Content Plan
+          <span className="sm:hidden">Get Started</span>
+          <span className="hidden sm:inline">Get Content That Performs</span>
         </a>
         <p className="mt-4 text-sm text-[#cfb580]/50">Reels from $250 · Packages from $1,850/mo</p>
       </section>
 
-      {/* ── Condensed value ── */}
+      {/* ── Agitation ── */}
       <section className="py-12 md:py-16 px-6 border-t border-[#cfb580]/15">
-        <div className="max-w-2xl mx-auto text-center space-y-4 text-lg text-white/80 leading-relaxed">
-          <p>
-            Light House Media is a DFW-based content team. We come to your business — anywhere
-            from Dallas to Fort Worth — and turn a single shoot into a month of scroll-stopping
-            reels and photos.
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6">
+            Content That Just Sits There Is Money You&apos;re Burning.
+          </h2>
+          <p className="text-lg text-white/80 leading-relaxed">
+            Most small-business content fills the calendar and does nothing else. Ours is built
+            to be watched and shared — reels engineered to move, not just post. Stop paying for
+            content that doesn&apos;t earn its place.
           </p>
-          <p className="text-[#cfb580]">
-            Same storytelling, same editing, same creative team behind our cinema work — on a
-            different camera, at a price built for growing local brands.
-          </p>
+        </div>
+      </section>
+
+      {/* ── Made in the Metroplex ── */}
+      <section className="py-12 md:py-16 px-6 border-t border-[#cfb580]/15">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6">Made in the Metroplex</h2>
+          <div className="space-y-5 text-lg text-white/80 leading-relaxed">
+            <p>
+              Light House Media is a DFW-based content team. We come to your business — anywhere
+              from Dallas to Fort Worth — and turn a single shoot into a month of scroll-stopping
+              reels and photos. Same storytelling, same editing, same creative team behind our
+              cinema work.
+            </p>
+            <p>
+              Your reels are captured on iPhone and your photos on real cameras, always.{' '}
+              <span className="text-[#cfb580]">
+                You&apos;re not getting a lighter version of LHM — you&apos;re getting LHM, on a
+                different camera, at a price built for growing local brands.
+              </span>
+            </p>
+          </div>
         </div>
       </section>
 
