@@ -48,8 +48,9 @@ export default function CompassDfwLanding() {
         <div className="relative mt-8 max-w-4xl">
           <span className="cdfw-bracket cdfw-bracket--tl" aria-hidden="true" />
           <span className="cdfw-bracket cdfw-bracket--br" aria-hidden="true" />
-          <h1 className="cdfw-reveal cdfw-d2 text-5xl sm:text-6xl md:text-8xl font-bold uppercase leading-[0.95] text-white">
-            Posting isn&apos;t the same as <span className="cdfw-sweep">performing.</span>
+          <h1 className="cdfw-reveal cdfw-d2 text-[2.7rem] sm:text-[3.375rem] md:text-[5.4rem] font-bold uppercase leading-[0.95] text-white">
+            <span className="text-red-500">Posting</span> isn&apos;t the same as{' '}
+            <span className="cdfw-sweep">performing.</span>
           </h1>
         </div>
         <p className="cdfw-reveal cdfw-d3 mt-7 text-lg sm:text-xl max-w-2xl text-white/70 leading-relaxed">
@@ -72,7 +73,7 @@ export default function CompassDfwLanding() {
       <section data-reveal className="py-20 md:py-32 px-6 border-t border-[#cfb580]/15">
         <div className="max-w-4xl mx-auto text-center">
           <p className="cdfw-tc cdfw-reveal">02 · The Problem</p>
-          <h2 className="cdfw-reveal cdfw-d1 mt-5 text-4xl sm:text-5xl md:text-7xl font-bold uppercase leading-[0.98] text-white">
+          <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[4.05rem] font-bold uppercase leading-[0.98] text-white">
             Content that just sits there is money you&apos;re{' '}
             <span className="cdfw-sweep">burning.</span>
           </h2>
@@ -87,7 +88,7 @@ export default function CompassDfwLanding() {
       <section data-reveal className="py-20 md:py-32 px-6 border-t border-[#cfb580]/15">
         <div className="max-w-4xl mx-auto text-center">
           <p className="cdfw-tc cdfw-reveal">03 · Local</p>
-          <h2 className="cdfw-reveal cdfw-d1 mt-5 text-4xl sm:text-5xl md:text-7xl font-bold uppercase leading-[0.98] text-white">
+          <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[4.05rem] font-bold uppercase leading-[0.98] text-white">
             Made in the <span className="cdfw-sweep">Metroplex.</span>
           </h2>
           <p className="cdfw-reveal cdfw-d2 mt-7 text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
@@ -108,7 +109,7 @@ export default function CompassDfwLanding() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center">
             <p className="cdfw-tc cdfw-reveal">04 · The Packages</p>
-            <h2 className="cdfw-reveal cdfw-d1 mt-5 text-4xl sm:text-5xl md:text-7xl font-bold uppercase leading-[0.98] text-white">
+            <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[4.05rem] font-bold uppercase leading-[0.98] text-white">
               Same team. Different <span className="cdfw-sweep">camera.</span>
             </h2>
           </div>
@@ -173,7 +174,7 @@ export default function CompassDfwLanding() {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <p className="cdfw-tc cdfw-reveal">05 · Get Started</p>
-            <h2 className="cdfw-reveal cdfw-d1 mt-5 text-4xl sm:text-5xl md:text-6xl font-bold uppercase leading-[0.98] text-white">
+            <h2 className="cdfw-reveal cdfw-d1 mt-5 text-[2rem] sm:text-[2.7rem] md:text-[3.375rem] font-bold uppercase leading-[0.98] text-white">
               Get content that <span className="cdfw-sweep">performs.</span>
             </h2>
             <p className="cdfw-reveal cdfw-d2 mt-6 text-white/70 text-lg">
