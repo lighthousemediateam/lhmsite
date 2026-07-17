@@ -58,6 +58,9 @@ export default function Header() {
     };
   }, [isOpen]);
 
+  // /compass-dfw is a paid-ad landing page with no site nav
+  if (pathname?.startsWith('/compass-dfw')) return null;
+
   return (
     <>
       {/* MOBILE brand title */}

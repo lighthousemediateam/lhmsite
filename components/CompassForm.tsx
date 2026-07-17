@@ -30,6 +30,19 @@ export default function CompassForm() {
       }
       setStatus('success');
       form.reset();
+
+      // Conversion tracking — optional chaining so nothing breaks while the
+      // tags aren't installed yet.
+      const w = window as unknown as {
+        fbq?: (...args: unknown[]) => void;
+        gtag?: (...args: unknown[]) => void;
+      };
+      // Meta Pixel: NOTE the Pixel base code is NOT installed on the site yet;
+      // this fires automatically once it is.
+      w.fbq?.('track', 'Lead');
+      // Google Ads conversion — fill in the ID/label from the Google Ads
+      // account, then uncomment:
+      // w.gtag?.('event', 'conversion', { send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL' });
     } catch (err) {
       setStatus('error');
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');

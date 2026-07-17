@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import './LoadingScreen.css';
 
 export default function LoadingScreen() {
+  const pathname = usePathname();
   const [fadeOut, setFadeOut] = useState(false);
   const [hide, setHide] = useState(false);
 
@@ -47,6 +49,9 @@ export default function LoadingScreen() {
     };
   }, []);
 
+  // Skip the intro screen on the paid-ad landing page — ad traffic should
+  // see content immediately.
+  if (pathname?.startsWith('/compass-dfw')) return null;
   if (hide) return null;
 
   return (

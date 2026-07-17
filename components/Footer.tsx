@@ -1,4 +1,12 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+
 export default function Footer() {
+  const pathname = usePathname();
+  // /compass-dfw is a paid-ad landing page with no site nav
+  if (pathname?.startsWith('/compass-dfw')) return null;
+
   return (
     <footer className="bg-[#1a191b] text-[#cfb580] px-6 py-12">
       <div className="w-full">

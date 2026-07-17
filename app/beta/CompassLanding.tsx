@@ -1,12 +1,16 @@
-// Full Compass landing page, parked while /beta shows a Coming Soon placeholder.
-// To launch: in page.tsx, re-export this component and compassMetadata (see note there).
 import type { Metadata } from 'next';
 import CompassForm from '@/components/CompassForm';
 
+// TODO: replace with the Google Voice number when Adam supplies it.
+// Must match the Google Business Profile NAP exactly. Used in the JSON-LD
+// schema and rendered on both pages once it's a real number.
+export const PHONE = '[PHONE]';
+const phoneIsSet = !PHONE.startsWith('[');
+
 export const compassMetadata: Metadata = {
-  title: 'The Compass Package | iPhone-Shot Reels with LHM Storytelling',
+  title: { absolute: 'Affordable DFW Social Content | The Compass Package | Light House Media' },
   description:
-    'The same Light House Media storytelling and editing — captured on iPhone at a price built for growing brands. Monthly reel + photo packages from $1,850/mo, à la carte reels from $250.',
+    'DFW-based content team. Monthly iPhone reels + camera photos with Light House Media storytelling — serving Dallas, Fort Worth, Plano, Arlington, Mansfield, Grapevine & Southlake. Reels from $250.',
   keywords: [
     'affordable video production Dallas',
     'social media reels Dallas',
@@ -18,17 +22,45 @@ export const compassMetadata: Metadata = {
   ],
   alternates: { canonical: 'https://www.lhmcollective.com/beta' },
   openGraph: {
-    title: 'The Compass Package | Light House Media',
+    title: 'Affordable DFW Social Content | The Compass Package',
     description:
-      'LHM storytelling and editing, captured on iPhone — monthly content packages built for growing brands. Reels from $250.',
+      'DFW-based content team. Monthly iPhone reels + camera photos with Light House Media storytelling — serving Dallas, Fort Worth, Plano, Arlington, Mansfield, Grapevine & Southlake. Reels from $250.',
     url: 'https://www.lhmcollective.com/beta',
     type: 'website',
   },
 };
 
+// Service-area business schema for the Compass page. NAP (name, phone,
+// Mansfield locality) must stay identical to the Google Business Profile.
+const compassSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Light House Media',
+  url: 'https://lhmcollective.com/beta',
+  ...(phoneIsSet ? { telephone: PHONE } : {}),
+  email: 'adam@lhmcollective.com',
+  image: 'https://www.lhmcollective.com/og-preview.jpg',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Mansfield',
+    addressRegion: 'TX',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Dallas' },
+    { '@type': 'City', name: 'Fort Worth' },
+    { '@type': 'City', name: 'Plano' },
+    { '@type': 'City', name: 'Arlington' },
+    { '@type': 'City', name: 'Mansfield' },
+    { '@type': 'City', name: 'Grapevine' },
+    { '@type': 'City', name: 'Southlake' },
+  ],
+};
+
 // The one entry-tier signal: a restrained "Shot on iPhone" motif used in the hero
 // and on package cards. Everything else matches the premium brand treatment.
-function IPhoneBadge({ children }: { children: React.ReactNode }) {
+export function IPhoneBadge({ children }: { children: React.ReactNode }) {
   return (
     <span className="inline-flex items-center gap-2 border border-[#cfb580]/40 rounded-full px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] text-[#cfb580]/80">
       <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
@@ -40,7 +72,7 @@ function IPhoneBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-const packages = [
+export const packages = [
   {
     name: 'Signature',
     price: '$1,850',
@@ -69,17 +101,21 @@ const galleryPlaceholders = Array.from({ length: 6 }, (_, i) => i);
 export default function CompassLanding() {
   return (
     <div className="bg-[#1a191b] text-[#cfb580] overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(compassSchema) }}
+      />
       {/* ── Hero ── */}
       <section className="relative flex flex-col items-center justify-center text-center px-6 pt-16 pb-20 md:pt-48 md:pb-28 min-h-[70vh] md:min-h-0">
         <IPhoneBadge>Shot on iPhone · Edited by LHM</IPhoneBadge>
         <h1 className="mt-6 text-5xl sm:text-6xl md:text-8xl font-bold uppercase leading-[0.95] max-w-5xl">
-          The Same Storytelling.
+          DFW Content, Shot on iPhone
           <br />
-          <span className="text-white">A Price That Fits.</span>
+          <span className="text-white">LHM Storytelling for Local Brands</span>
         </h1>
         <p className="mt-6 text-lg sm:text-xl md:text-2xl max-w-2xl text-[#cfb580]/80">
           The Compass Package is Light House Media&apos;s creative team, editing, and style —
-          captured on iPhone instead of cinema cameras, at a rate built for growing brands.
+          captured on iPhone instead of cinema cameras, at a rate built for growing DFW brands.
         </p>
         <a
           href="#intake"
@@ -90,26 +126,23 @@ export default function CompassLanding() {
         <p className="mt-4 text-sm text-[#cfb580]/50">Reels from $250 · Packages from $1,850/mo</p>
       </section>
 
-      {/* ── What it is / who it's for ── */}
+      {/* ── Made in the Metroplex ── */}
       <section className="py-16 md:py-24 px-6 border-t border-[#cfb580]/15">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6">
-            Built for Brands That Aren&apos;t Ready for a $6K Shoot
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6">Made in the Metroplex</h2>
           <div className="space-y-5 text-lg text-white/80 leading-relaxed">
             <p>
-              Our premium camera packages run $4,000–$6,000 — that&apos;s $450–$650 per reel, and for
-              established brands it&apos;s worth every dollar. But plenty of great brands want LHM&apos;s
-              storytelling before their budget gets there.
+              Light House Media is a DFW-based content team. We come to your business — anywhere
+              from Dallas to Fort Worth — and turn a single shoot into a month of scroll-stopping
+              reels and photos. Same storytelling, same editing, same creative team behind our
+              cinema work.
             </p>
             <p>
-              Compass closes that gap. Same creative team. Same planning, direction, and editing.
-              The only difference: your reels are captured on iPhone instead of cinema cameras —
-              and your photos are still shot on real cameras, always.
-            </p>
-            <p className="text-[#cfb580]">
-              You&apos;re not getting a lighter version of LHM. You&apos;re getting LHM, on a different
-              camera.
+              Your reels are captured on iPhone and your photos on real cameras, always.{' '}
+              <span className="text-[#cfb580]">
+                You&apos;re not getting a lighter version of LHM — you&apos;re getting LHM, on a
+                different camera, at a price built for growing local brands.
+              </span>
             </p>
           </div>
         </div>
@@ -236,6 +269,29 @@ export default function CompassLanding() {
             </p>
           </div>
           <CompassForm />
+        </div>
+      </section>
+
+      {/* ── Serving the DFW Metroplex ── */}
+      <section className="py-16 md:py-24 px-6 border-t border-[#cfb580]/15">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl font-bold uppercase mb-6">
+            Serving the DFW Metroplex
+          </h2>
+          <p className="text-lg text-white/80 leading-relaxed">
+            On-location content across{' '}
+            <span className="text-[#cfb580]">
+              Dallas, Fort Worth, Plano, Arlington, Mansfield, Grapevine, and Southlake
+            </span>
+            . If you&apos;re in the metroplex, we come to you.
+          </p>
+          {phoneIsSet && (
+            <p className="mt-6 text-lg">
+              <a href={`tel:${PHONE}`} className="text-[#cfb580] hover:text-white transition">
+                {PHONE}
+              </a>
+            </p>
+          )}
         </div>
       </section>
     </div>
